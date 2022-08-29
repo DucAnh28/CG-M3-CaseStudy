@@ -7,6 +7,14 @@ create table category
     type        varchar(255),
     description varchar(255)
 );
+create table author
+  (
+      id          int auto_increment primary key,
+      name        varchar(255) not null,
+      yearBorn    date         not null,
+      national    varchar(255),
+      description varchar(255)
+  );
 create table books
 (
     id          int primary key auto_increment,
@@ -27,14 +35,7 @@ create table stock
     foreign key (book_id) references books (id),
     quantity int
 );
-create table author
-(
-    id          int auto_increment primary key,
-    name        varchar(255) not null,
-    yearBorn    date         not null,
-    national    varchar(255),
-    description varchar(255)
-);
+
 create table orderS
 (
     id          int primary key auto_increment,
