@@ -1,4 +1,4 @@
-package com.codegym.casestudy.model;
+package casestudy.model;
 
 import java.time.LocalDate;
 import java.util.Date;
