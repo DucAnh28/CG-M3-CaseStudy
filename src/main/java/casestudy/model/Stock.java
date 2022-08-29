@@ -1,4 +1,4 @@
-package com.codegym.casestudy.model;
+package casestudy.model;
 
 public class Stock {
     private int id;

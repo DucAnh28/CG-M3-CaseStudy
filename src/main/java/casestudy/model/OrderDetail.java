@@ -1,4 +1,4 @@
-package com.codegym.casestudy.model;
+package casestudy.model;
 
 public class OrderDetail {
     private int id;
