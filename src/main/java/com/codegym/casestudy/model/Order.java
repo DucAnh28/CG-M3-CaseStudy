@@ -4,24 +4,16 @@ import java.time.LocalDate;
 
 public class Order {
     private int id;
-    private int customerId;
-    private LocalDate create;
-    private LocalDate delivery;
-    private String status;
-    private String address;
-    private String phone;
+    private int customer_id;
+    private LocalDate dateBuy;
 
     public Order() {
     }
 
-    public Order(int id, int customerId, LocalDate create, LocalDate delivery, String status, String address, String phone) {
+    public Order(int id, int customer_id, LocalDate dateBuy) {
         this.id = id;
-        this.customerId = customerId;
-        this.create = create;
-        this.delivery = delivery;
-        this.status = status;
-        this.address = address;
-        this.phone = phone;
+        this.customer_id = customer_id;
+        this.dateBuy = dateBuy;
     }
 
     public int getId() {
@@ -32,64 +24,28 @@ public class Order {
         this.id = id;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getCustomer_id() {
+        return customer_id;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
-    public LocalDate getCreate() {
-        return create;
+    public LocalDate getDateBuy() {
+        return dateBuy;
     }
 
-    public void setCreate(LocalDate create) {
-        this.create = create;
-    }
-
-    public LocalDate getDelivery() {
-        return delivery;
-    }
-
-    public void setDelivery(LocalDate delivery) {
-        this.delivery = delivery;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setDateBuy(LocalDate dateBuy) {
+        this.dateBuy = dateBuy;
     }
 
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", customerId=" + customerId +
-                ", create=" + create +
-                ", delivery=" + delivery +
-                ", status='" + status + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
+                ", customer_id=" + customer_id +
+                ", dateBuy=" + dateBuy +
                 '}';
     }
 }
