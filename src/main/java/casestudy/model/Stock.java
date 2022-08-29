@@ -1,17 +1,15 @@
-package com.codegym.casestudy.model;
+package casestudy.model;
 
-public class OrderDetail {
+public class Stock {
     private int id;
-    private int orders_id;
     private int book_id;
     private int quantity;
 
-    public OrderDetail() {
+    public Stock() {
     }
 
-    public OrderDetail(int id, int orders_id, int book_id, int quantity) {
+    public Stock(int id, int book_id, int quantity) {
         this.id = id;
-        this.orders_id = orders_id;
         this.book_id = book_id;
         this.quantity = quantity;
     }
@@ -22,14 +20,6 @@ public class OrderDetail {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getOrders_id() {
-        return orders_id;
-    }
-
-    public void setOrders_id(int orders_id) {
-        this.orders_id = orders_id;
     }
 
     public int getBook_id() {
@@ -50,9 +40,8 @@ public class OrderDetail {
 
     @Override
     public String toString() {
-        return "OrderDetail{" +
+        return "Stock{" +
                 "id=" + id +
-                ", orders_id=" + orders_id +
                 ", book_id=" + book_id +
                 ", quantity=" + quantity +
                 '}';

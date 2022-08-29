@@ -1,35 +1,43 @@
-package com.codegym.casestudy.model;
+package casestudy.model;
 
 public class OrderDetail {
-    private int orderId;
-    private int bookId;
+    private int id;
+    private int orders_id;
+    private int book_id;
     private int quantity;
-    private double total;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(int orderId, int bookId, int quantity, double total) {
-        this.orderId = orderId;
-        this.bookId = bookId;
+    public OrderDetail(int id, int orders_id, int book_id, int quantity) {
+        this.id = id;
+        this.orders_id = orders_id;
+        this.book_id = book_id;
         this.quantity = quantity;
-        this.total = total;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public int getId() {
+        return id;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getBookId() {
-        return bookId;
+    public int getOrders_id() {
+        return orders_id;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setOrders_id(int orders_id) {
+        this.orders_id = orders_id;
+    }
+
+    public int getBook_id() {
+        return book_id;
+    }
+
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
     }
 
     public int getQuantity() {
@@ -40,21 +48,13 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
     @Override
     public String toString() {
         return "OrderDetail{" +
-                "orderId=" + orderId +
-                ", bookId=" + bookId +
+                "id=" + id +
+                ", orders_id=" + orders_id +
+                ", book_id=" + book_id +
                 ", quantity=" + quantity +
-                ", total=" + total +
                 '}';
     }
 }

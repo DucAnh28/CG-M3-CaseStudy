@@ -1,7 +1,6 @@
 package casestudy.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Customer {
     private int id;
@@ -13,12 +12,12 @@ public class Customer {
     private String email;
     private String account;
     private String password;
-    private LocalDate startdate;
+    private LocalDate startDate;
 
     public Customer() {
     }
 
-    public Customer(int id, String name, int age, String gender, String address, String phone, String email, String account, String password, LocalDate startdate) {
+    public Customer(int id, String name, int age, String gender, String address, String phone, String email, String account, String password, LocalDate startDate) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -28,7 +27,7 @@ public class Customer {
         this.email = email;
         this.account = account;
         this.password = password;
-        this.startdate = startdate;
+        this.startDate = startDate;
     }
 
     public int getId() {
@@ -103,12 +102,12 @@ public class Customer {
         this.password = password;
     }
 
-    public LocalDate getStartdate() {
-        return startdate;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setStartdate(LocalDate startdate) {
-        this.startdate = startdate;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
     @Override
@@ -123,7 +122,7 @@ public class Customer {
                 ", email='" + email + '\'' +
                 ", account='" + account + '\'' +
                 ", password='" + password + '\'' +
-                ", startdate=" + startdate +
+                ", startDate=" + startDate +
                 '}';
     }
 }
