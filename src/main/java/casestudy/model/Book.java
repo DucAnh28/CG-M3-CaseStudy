@@ -13,6 +13,12 @@ public class Book {
     public Book() {
     }
 
+    public Book(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
     public Book(int id, String code, String name, int author_id, double price, int category_id, String image, String description) {
         this.id = id;
         this.code = code;
