@@ -1,5 +1,6 @@
 package com.codegym.casestudy.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Customer {
@@ -12,12 +13,12 @@ public class Customer {
     private String email;
     private String account;
     private String password;
-    private Date startdate;
+    private LocalDate startdate;
 
     public Customer() {
     }
 
-    public Customer(int id, String name, int age, String gender, String address, String phone, String email, String account, String password, Date startdate) {
+    public Customer(int id, String name, int age, String gender, String address, String phone, String email, String account, String password, LocalDate startdate) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -102,11 +103,11 @@ public class Customer {
         this.password = password;
     }
 
-    public Date getStartdate() {
+    public LocalDate getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(Date startdate) {
+    public void setStartdate(LocalDate startdate) {
         this.startdate = startdate;
     }
 

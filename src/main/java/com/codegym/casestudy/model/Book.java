@@ -8,11 +8,13 @@ public class Book {
     private String bookType;
     private String author;
     private String description;
+    private String image;
+
 
     public Book() {
     }
 
-    public Book(int id, String code, String name, double price, String bookType, String author, String description) {
+    public Book(int id, String code, String name, double price, String bookType, String author, String description, String image) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -20,6 +22,7 @@ public class Book {
         this.bookType = bookType;
         this.author = author;
         this.description = description;
+        this.image = image;
     }
 
     public int getId() {
@@ -78,6 +81,14 @@ public class Book {
         this.description = description;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -88,6 +99,7 @@ public class Book {
                 ", bookType='" + bookType + '\'' +
                 ", author='" + author + '\'' +
                 ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }
