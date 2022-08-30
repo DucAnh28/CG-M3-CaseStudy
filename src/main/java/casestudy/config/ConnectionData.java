@@ -4,17 +4,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionJDBC {
+public class ConnectionData {
     private Connection connection;
 
-    public static ConnectionJDBC instance = null;
+    public static ConnectionData instance = null;
 
-    private ConnectionJDBC() {
+    private ConnectionData() {
     }
 
-    public static ConnectionJDBC getInstance() {
+    public static ConnectionData getInstance() {
         if (instance == null) {
-            return instance = new ConnectionJDBC();
+            return instance = new ConnectionData();
         }
         return instance;
     }
@@ -39,8 +39,8 @@ public class ConnectionJDBC {
     }
 
     public static void main(String[] args) {
-        ConnectionJDBC connectionJDBC = ConnectionJDBC.getInstance();
-        Connection connection1 = connectionJDBC.getConnect();
+        ConnectionData connectionData = ConnectionData.getInstance();
+        Connection connection1 = connectionData.getConnect();
         System.out.println(connection1);
 
     }
