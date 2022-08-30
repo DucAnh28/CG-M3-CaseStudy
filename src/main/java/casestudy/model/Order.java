@@ -1,16 +1,17 @@
 package casestudy.model;
 
 import java.time.LocalDate;
+import java.sql.Date;
 
 public class Order {
     private int id;
     private int customer_id;
-    private LocalDate dateBuy;
+    private Date dateBuy;
 
     public Order() {
     }
 
-    public Order(int id, int customer_id, LocalDate dateBuy) {
+    public Order(int id, int customer_id, Date dateBuy) {
         this.id = id;
         this.customer_id = customer_id;
         this.dateBuy = dateBuy;
@@ -32,11 +33,11 @@ public class Order {
         this.customer_id = customer_id;
     }
 
-    public LocalDate getDateBuy() {
+    public Date getDateBuy() {
         return dateBuy;
     }
 
-    public void setDateBuy(LocalDate dateBuy) {
+    public void setDateBuy(Date dateBuy) {
         this.dateBuy = dateBuy;
     }
 
