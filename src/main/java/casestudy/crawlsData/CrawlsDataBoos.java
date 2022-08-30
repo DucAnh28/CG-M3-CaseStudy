@@ -16,7 +16,7 @@ public class CrawlsDataBoos {
             ArrayList<Element> elements = document.getElementsByClass("t-view");
             ArrayList<Element> elements1 = document.getElementsByClass("au-view");
             ArrayList<Element> elements2 = document.getElementsByClass("real-price");
-            ArrayList<Element> elements3 = document.getElementsByClass("collection-title");
+//            ArrayList<Element> elements3 = document.getElementsByClass("collection-title");
             ArrayList<Element> elements4 = document.getElementsByClass("img-view");
 //            ArrayList<Element> elements5 = document.getElementsByClass("status");
             int id = 0;
