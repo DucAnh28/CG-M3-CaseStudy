@@ -7,7 +7,7 @@ import casestudy.model.Book;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CrawlsDataBoos {
+public class CrawlsDataBook {
     private final String url="https://bookbuy.vn/sach-moi/p1";
     private ArrayList<Book> bookArrayList = new ArrayList<>();
     public void getData(){
@@ -39,8 +39,8 @@ public class CrawlsDataBoos {
         }
     }
 
-//    public static void main(String[] args) {
-//        CrawlsDataBoos crawlsDataBoos = new CrawlsDataBoos();
-//        crawlsDataBoos.getData();
-//    }
+    public static void main(String[] args) {
+        CrawlsDataBook crawlsDataBook = new CrawlsDataBook();
+        crawlsDataBook.getData();
+    }
 }
