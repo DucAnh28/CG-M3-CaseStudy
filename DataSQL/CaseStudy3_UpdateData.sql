@@ -1,3 +1,4 @@
+use casestudy3;
 select * from author;
 select * from category;
 select * from books;
@@ -17,3 +18,5 @@ insert into customer values (1,'bay',18,'Nam','HN','012345678','abcxyz@gmail.com
 
 select books.name ,a.name
 from books join author a on a.id = books.author_id;
+
+select * from books;
