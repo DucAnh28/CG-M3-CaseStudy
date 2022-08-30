@@ -6,11 +6,12 @@ import casestudy.model.Book;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CrawlsDataBook {
     private final String url="https://bookbuy.vn/sach-moi/p1";
     private ArrayList<Book> bookArrayList = new ArrayList<>();
-    public void getData(){
+    public List<Book> getData(){
         try {
             Document document = Jsoup.connect(url).get();
             ArrayList<Element> elements = document.getElementsByClass("t-view");
@@ -24,6 +25,8 @@ public class CrawlsDataBook {
             int category_id = 0;
             for (int i = 1; i <= 10; i++) {
                 id++;
+                author_id++;
+
                 String code = "";
                 String description = "Sach hay vai chuong";
                String name = elements.get(i).getElementsByTag("a").text();
@@ -37,10 +40,16 @@ public class CrawlsDataBook {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return bookArrayList;
     }
 
     public static void main(String[] args) {
         CrawlsDataBook crawlsDataBook = new CrawlsDataBook();
-        crawlsDataBook.getData();
+        List<Book> bookList = crawlsDataBook.getData();
+        for (Book x: bookList
+             ) {
+            System.out.println(x.toString());
+        }
+
     }
 }

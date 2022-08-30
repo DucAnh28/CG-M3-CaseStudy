@@ -12,7 +12,7 @@ public class Book {
     private String image;
     private String description;
 
-    public Book(int id, String name, String author, String description, List<Book> categories) {
+    public Book() {
     }
 
     public Book(int id, String name, double price) {

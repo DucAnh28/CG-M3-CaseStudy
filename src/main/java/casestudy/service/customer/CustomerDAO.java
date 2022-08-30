@@ -1,4 +1,4 @@
-package casestudy.service;
+package casestudy.service.customer;
 
 import casestudy.config.ConnectionDatabase;
 import casestudy.model.Customer;
@@ -11,9 +11,9 @@ import java.util.List;
 
 import static java.sql.DriverManager.getConnection;
 
-public class CustomerDAO implements ICustomerDAO{
+public class CustomerDAO implements ICustomerDAO {
 
-    Connection connection = ConnectionDatabase.getInstance().getConnect();
+    Connection connection = ConnectionDatabase.instance.getConnect();
 
     private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO customers (id,name,age,gender,address,phone,email,account,password,startdate) VALUES (?, ?, ?);";
     private static final String SELECT_CUSTOMER_BY_ID = "select id,name,age,gender,address,phone,email,account,password,startdate from customers where id =?";
