@@ -1,5 +1,7 @@
 package casestudy.model;
 
+import java.util.List;
+
 public class Book {
     private int id;
     private String code;
@@ -9,7 +11,7 @@ public class Book {
     private String author;
     private String description;
 
-    public Book() {
+    public Book(int id, String name, String author, String description, List<Book> categories) {
     }
 
     public Book(int id, String code, String name, double price, String bookType, String author, String description) {
