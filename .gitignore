@@ -4,7 +4,8 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-src/main/java/casestudy/config/ConnectionJDBC.java
+src/main/java/casestudy/config/*
+
 ### Chi Kieu Anh ###
 # From https://github.com/github/gitignore/blob/master/Gradle.gitignore
 .gradle
