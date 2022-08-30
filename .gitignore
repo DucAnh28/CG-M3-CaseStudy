@@ -1,7 +1,7 @@
 .gradle
 build/
 .idea
-src/main/java/casestudy/config
+src/main/java/casestudy/config/*
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
