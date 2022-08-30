@@ -1,6 +1,8 @@
 package casestudy.model;
 
+import javax.xml.crypto.Data;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Customer {
     private int id;
@@ -12,12 +14,12 @@ public class Customer {
     private String email;
     private String account;
     private String password;
-    private LocalDate startDate;
+    private Date startDate;
 
     public Customer() {
     }
 
-    public Customer(int id, String name, int age, String gender, String address, String phone, String email, String account, String password, LocalDate startDate) {
+    public Customer(int id, String name, int age, String gender, String address, String phone, String email, String account, String password, Date startDate) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -102,11 +104,11 @@ public class Customer {
         this.password = password;
     }
 
-    public LocalDate getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
