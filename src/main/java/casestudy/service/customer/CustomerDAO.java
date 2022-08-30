@@ -1,4 +1,4 @@
-package casestudy.service;
+package casestudy.service.customer;
 
 import casestudy.config.ConnectionDatabase;
 import casestudy.model.Customer;
@@ -11,11 +11,11 @@ import java.util.List;
 
 import static java.sql.DriverManager.getConnection;
 
-public class CustomerDAO implements ICustomerDAO{
+public class CustomerDAO implements ICustomerDAO {
 
     Connection connection = ConnectionDatabase.getInstance().getConnect();
 
-    private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO customers (id,name,age,gender,address,phone,email,account,password,startdate) VALUES (?, ?, ?);";
+    private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO customer (id,name,age,gender,address,phone,email,account,password,startdate) VALUES (?, ?, ?);";
     private static final String SELECT_CUSTOMER_BY_ID = "select id,name,age,gender,address,phone,email,account,password,startdate from customers where id =?";
     private static final String SELECT_ALL_CUSTOMERS = "select * from customers";
     private static final String DELETE_CUSTOMERS_SQL = "delete from customers where id = ?;";
@@ -23,18 +23,24 @@ public class CustomerDAO implements ICustomerDAO{
 
     public CustomerDAO() {
     }
+
+    @Override
+    public List<Customer> selectAllCustomers() {
+        return null;
+    }
+
     public void insertCustomer(Customer customer) throws SQLException {
-            System.out.println(INSERT_CUSTOMERS_SQL);
-        try(PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMERS_SQL)){
-            preparedStatement.setInt(1,customer.getId());
-            preparedStatement.setString(2,customer.getName());
-            preparedStatement.setInt(3,customer.getAge());
-            preparedStatement.setString(4,customer.getGender());
-            preparedStatement.setString(5,customer.getAddress());
-            preparedStatement.setString(6,customer.getPhone());
-            preparedStatement.setString(7,customer.getEmail());
-            preparedStatement.setString(8,customer.getAccount());
-            preparedStatement.setString(9,customer.getPassword());
+        System.out.println(INSERT_CUSTOMERS_SQL);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMERS_SQL)) {
+            preparedStatement.setInt(1, customer.getId());
+            preparedStatement.setString(2, customer.getName());
+            preparedStatement.setInt(3, customer.getAge());
+            preparedStatement.setString(4, customer.getGender());
+            preparedStatement.setString(5, customer.getAddress());
+            preparedStatement.setString(6, customer.getPhone());
+            preparedStatement.setString(7, customer.getEmail());
+            preparedStatement.setString(8, customer.getAccount());
+            preparedStatement.setString(9, customer.getPassword());
             preparedStatement.setDate(10, (Date) customer.getStartDate());
 
         }
@@ -45,10 +51,6 @@ public class CustomerDAO implements ICustomerDAO{
         return null;
     }
 
-    @Override
-    public List<Customer> selectAllCustomers() {
-        return null;
-    }
 
     @Override
     public boolean deleteCustomer(int id) throws SQLException {

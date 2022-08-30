@@ -1,4 +1,4 @@
-package casestudy.service;
+package casestudy.service.customer;
 
 import casestudy.model.Customer;
 
