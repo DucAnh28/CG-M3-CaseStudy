@@ -12,7 +12,7 @@ public class ConnectionJDBC {
     private ConnectionJDBC() {
     }
 
-    public ConnectionJDBC getInstance() {
+    public static ConnectionJDBC getInstance() {
         if (instance == null) {
             return instance = new ConnectionJDBC();
         }
@@ -36,5 +36,12 @@ public class ConnectionJDBC {
             }
         }
         return connection;
+    }
+
+    public static void main(String[] args) {
+        ConnectionJDBC connectionJDBC = ConnectionJDBC.getInstance();
+        Connection connection1 = connectionJDBC.getConnect();
+        System.out.println(connection1);
+
     }
 }
