@@ -25,7 +25,7 @@
     <select name="categories" id="categories" multiple>
         <c:forEach items="${categories}" var="c">
             <option value="${c.id}">${c.type}</option>
-            <option value="${c.id}">${c.description}</option>
+<%--            <option value="${c.id}">${c.description}</option>--%>
         </c:forEach>
     </select>
     <input value="tao moi" type="submit">

@@ -22,6 +22,7 @@
         <th>Price</th>
         <th>Image</th>
         <th>Description</th>
+        <th>Category</th>
     </tr>
     <c:forEach items="${books}" var="b">
         <tr>

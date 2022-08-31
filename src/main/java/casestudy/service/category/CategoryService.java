@@ -62,7 +62,7 @@ public class CategoryService implements ICategoryDAO{
             ResultSet resultSet = statement1.executeQuery();
             while (resultSet.next()){
                 int id = resultSet.getInt("id");
-                String type = resultSet.getString("name");
+                String type = resultSet.getString("type");
                 String description = resultSet.getString("description");
                 Category category = new Category(id, type, description);
                 categories.add(category);
