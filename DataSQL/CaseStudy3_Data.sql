@@ -10,13 +10,13 @@ create table category
 );
 ## Tác giả:
 create table author
-  (
-      id          int auto_increment primary key,
-      name        varchar(255) not null,
-      yearBorn    date         not null,
-      national    varchar(255),
-      description varchar(255)
-  );
+(
+    id          int auto_increment primary key,
+    name        varchar(255) not null,
+    yearBorn    date         not null,
+    national    varchar(255),
+    description varchar(255)
+);
 ## Sách
 create table books
 (
@@ -31,14 +31,22 @@ create table books
     imgage      varchar(255),
     description nvarchar(255)
 );
-## Kho:
-create table stock
+# Danh mục sách cùng thể loại:
+create table book_category
 (
-    id      int primary key auto_increment,
-    book_id int not null,
+    book_id     int not null,
+    category_id int not null,
     foreign key (book_id) references books (id),
-    quantity int
+    foreign key (category_id) references books (id)
 );
+## Kho:
+        create table stock
+        (
+        id int primary key auto_increment,
+        book_id int not null,
+        foreign key (book_id) references books (id),
+        quantity int
+        );
 ## Khách hàng:
 create table customer
 (
@@ -57,17 +65,19 @@ create table customer
 create table orderS
 (
     id          int primary key auto_increment,
-    customer_id int ,
-    foreign key (customer_id) references customer(id),
-    dateBuy date
+    customer_id int,
+    foreign key (customer_id) references customer (id),
+    dateBuy     date
 );
 ## Đơn hàng chi tiết:
-create table ordersdetail(
-    id  int primary key auto_increment,
+create table ordersdetail
+(
+    id        int primary key auto_increment,
     orders_id int,
-    foreign key (orders_id) references orderS(id),
-    book_id int,
-    foreign key (book_id) references books(id),
-    quantity int not null
+    foreign key (orders_id) references orderS (id),
+    book_id   int,
+    foreign key (book_id) references books (id),
+    quantity  int not null
 );
+
 

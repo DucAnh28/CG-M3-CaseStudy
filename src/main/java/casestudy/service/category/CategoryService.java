@@ -34,7 +34,7 @@ public class CategoryService implements ICategoryDAO{
     }
 
     @Override
-    public Category selectByName(String name) {
+    public List<Category> selectByName(String name) {
         return null;
     }
 

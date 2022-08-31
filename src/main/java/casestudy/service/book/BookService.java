@@ -46,8 +46,30 @@ public class BookService implements IBookDAO {
     }
 
     @Override
-    public Book selectByName(String name) {
+    public List<Book> selectByName(String name) {
         return null;
+=======
+    public List<Book> selectByName(String name) {
+        Book book = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BOOK_BY_NAME);
+            preparedStatement.setString(1, name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String code = resultSet.getString("code");
+                int author_id = resultSet.getInt("author_id");
+                double price = resultSet.getDouble("price");
+                int category_id = resultSet.getInt("category_id");
+                String image = resultSet.getString("image");
+                String description = resultSet.getString("description");
+                book = new Book(id, code,name, author_id, price, category_id, image, description);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return book;
+>>>>>>> ducanh
     }
 
     @Override

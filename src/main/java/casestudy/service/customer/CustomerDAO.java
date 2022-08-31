@@ -46,6 +46,30 @@ public class CustomerDAO implements ICustomerDAO {
     }
 
     @Override
+    public List<Customer> selectByName(String name) {
+        List<Customer> customerList = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_CUSTOMER_BY_NAME);
+            statement.setString(1,"'%"+name+"%'");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String name1 = resultSet.getString("name");
+                int age = resultSet.getInt("age");
+                String gender = resultSet.getString("gender");
+                String address = resultSet.getString("address");
+                String phone = resultSet.getString("phone");
+                String email = resultSet.getString("email");
+                String account = resultSet.getString("account");
+                String password = resultSet.getString("password");
+                Date startDate = resultSet.getDate("startdate");
+                Customer customer = new Customer(id,name1,age,gender,address,phone,email,account,password,startDate);
+                customerList.add(customer);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return customerList;
     public Customer selectByName(String name) {
         Customer
     }
