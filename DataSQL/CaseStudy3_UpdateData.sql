@@ -27,3 +27,4 @@ alter table books drop constraint books_ibfk_2;
 alter table books drop column category_id;
 
 select * from books;
+
