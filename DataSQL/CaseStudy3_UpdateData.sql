@@ -16,7 +16,6 @@ insert into category values (1,'Khoa học viễn tưởng','Thể loại hành 
 # Customer:
 select * from customer;
 insert into customer values (1,'bay',18,'Nam','HN','012345678','abcxyz@gmail.com','bay','123456','2000-08-12');
-
 # Orders:
 select * from orders;
 insert into orders values (1,1,'2022-08-30');

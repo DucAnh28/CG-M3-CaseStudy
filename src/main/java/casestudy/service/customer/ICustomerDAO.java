@@ -6,6 +6,6 @@ import casestudy.service.IService;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface ICustomerDAO extends IService {
+public interface ICustomerDAO extends IService<Customer> {
 
 }

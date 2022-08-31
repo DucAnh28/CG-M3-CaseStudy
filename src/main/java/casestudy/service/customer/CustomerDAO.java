@@ -2,20 +2,17 @@ package casestudy.service.customer;
 
 import casestudy.config.ConnectionDatabase;
 import casestudy.model.Customer;
-
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.sql.DriverManager.getConnection;
 
 public class CustomerDAO implements ICustomerDAO {
 
     Connection connection = ConnectionDatabase.getInstance().getConnect();
     private static final String SELECT_ALL_CUSTOMERS = "select * from customer";
-    private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO customer (id,name,age,gender,address,phone,email,account,password,startdate) VALUES (?, ?, ?);";
-    private static final String SELECT_CUSTOMER_BY_ID = "select id,name,age,gender,address,phone,email,account,password,startdate from customers where id =?";
-
+    private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO customer (id,name,age,gender,address,phone,email,account,password,startdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    private static final String SELECT_CUSTOMER_BY_NAME = "select * from customers where name =%?%";
     private static final String DELETE_CUSTOMERS_SQL = "delete from customers where id = ?;";
     private static final String UPDATE_CUSTOMERS_SQL = "update customers set name = ?,age = ?, gender = ?, address = ?, phone = ?, email = ?, account = ?, password = ?, startdate = ? where id = ?;";
 
@@ -49,22 +46,43 @@ public class CustomerDAO implements ICustomerDAO {
     }
 
     @Override
-    public Object selectByName(String name) {
-        return null;
+    public Customer selectByName(String name) {
+        Customer
     }
 
     @Override
-    public void delete(Object o) {
-
-    }
-
-    @Override
-    public void save(Object o) {
+    public void delete(Customer customer) {
 
     }
 
     @Override
-    public void update(int id, Object o) {
+    public void save(Customer customer) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(INSERT_CUSTOMERS_SQL);
+            statement.setInt(1,customer.getId());
+            statement.setString(2,customer.getName());
+            statement.setInt(3,customer.getAge());
+            statement.setString(4, customer.getGender());
+            statement.setString(5, customer.getAddress());
+            statement.setString(6, customer.getPhone());
+            statement.setString(7, customer.getEmail());
+            statement.setString(8, customer.getAccount());
+            statement.setString(9, customer.getPassword());
+            statement.setDate(10, customer.getStartDate());
+            statement.executeUpdate();
+            System.out.println("Thanh cong");
+            } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    @Override
+    public void update(int id, Customer customer) {
 
     }
+
+//    public static void main(String[] args) {
+//        CustomerDAO customerDAO = new CustomerDAO();
+//        customerDAO.save(new Customer(2,"ducanh",22,"Male","HN","0969282458","ducanh@gmail.com","ducanh123","ducanh123",Date.valueOf(LocalDate.now())));
+//    }
 }
