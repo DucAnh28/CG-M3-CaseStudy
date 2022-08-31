@@ -7,6 +7,7 @@ create table category
     type        varchar(255),
     description varchar(255)
 );
+drop table category;
 create table author
   (
       id          int auto_increment primary key,
@@ -28,6 +29,12 @@ create table books
     imgage      varchar(255),
     description nvarchar(255)
 );
+drop table books;
+alter table books drop constraint books_ibfk_1;
+alter table books drop constraint books_ibfk_2;
+alter table books drop column category_id;
+
+
 create table stock
 (
     id      int primary key auto_increment,
