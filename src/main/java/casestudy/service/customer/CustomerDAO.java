@@ -10,11 +10,12 @@ import java.util.List;
 public class CustomerDAO implements ICustomerDAO {
 
     Connection connection = ConnectionDatabase.getInstance().getConnect();
-    private static final String SELECT_ALL_CUSTOMERS = "select * from customer";
+    private static final String SELECT_ALL_CUSTOMERS = "select * from customer where status = 'ACTIVE' ;";
     private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO customer (id,name,age,gender,address,phone,email,account,password,startdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT_CUSTOMER_BY_NAME = "select * from customer where name like ? ";
-    private static final String DELETE_CUSTOMERS_SQL = "delete from customer where id = ?;";
-    private static final String UPDATE_CUSTOMERS_SQL = "update customers set name = ?,age = ?, gender = ?, address = ?, phone = ?, email = ?, account = ?, password = ?, startdate = ? where id = ?;";
+    private static final String DELETE_CUSTOMERS_SQL = "UPDATE customer set status = 'DISABLE' where id = ?";
+    private static final String UPDATE_CUSTOMERS_DETAIL = "update customer set name = ?,age = ?, gender = ?, address = ?, phone = ?, email = ? where id = ?;";
+    private static final String UPDATE_PASSWORD_CUS = "update customer set password = ? where id = ?;";
 
     public CustomerDAO() {
     }
@@ -51,7 +52,7 @@ public class CustomerDAO implements ICustomerDAO {
         List<Customer> customerList = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_CUSTOMER_BY_NAME);
-            statement.setString(1, "%" +name +"%");
+            statement.setString(1, "%" + name + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -75,12 +76,12 @@ public class CustomerDAO implements ICustomerDAO {
     }
 
     public void delete(int id) {
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement(DELETE_CUSTOMERS_SQL);
-            statement.setInt(1,id);
+            statement.setInt(1, id);
             statement.executeUpdate();
-
-        } catch (SQLException e){
+            System.out.println("Disable Customer Successfull !");
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
@@ -109,7 +110,27 @@ public class CustomerDAO implements ICustomerDAO {
 
     @Override
     public void update(int id, Customer customer) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(UPDATE_CUSTOMERS_DETAIL);
+            statement.setString(1,customer.getName());
+            statement.setInt(2,customer.getAge());
+            statement.setString(3,customer.getGender());
+            statement.setString(4,customer.getAddress());
+            statement.setString(5,customer.getPhone());
+            statement.setString(6,customer.getEmail());
+            statement.setInt(7,id);
+            statement.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void changePasswordCustomer(String password){
 
     }
 
+    public static void main(String[] args) {
+        ICustomerDAO customerDAO = new CustomerDAO();
+        customerDAO.delete(1);
+    }
 }
