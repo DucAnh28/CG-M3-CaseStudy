@@ -1,6 +1,5 @@
 package casestudy.service.book;
 
-import casestudy.crawlsData.CrawlsDataBook;
 import casestudy.model.Book;
 import casestudy.service.IService;
 
@@ -11,7 +10,7 @@ public interface IBookDAO extends IService<Book> {
     List<Book> selectAll();
 
     @Override
-    Book selectByName(String name);
+    List<Book> selectByName(String name);
 
     @Override
     void delete(Book book);

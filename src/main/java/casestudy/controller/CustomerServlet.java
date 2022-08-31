@@ -28,10 +28,20 @@ public class CustomerServlet extends HttpServlet {
             case "create":
                 showListCreate(req,resp);
                 break;
+            case "findByName":
+                findByName(req,resp);
+                break;
             default:
                 showAllCustomerInShop(req,resp);
                 break;
         }
+    }
+    private void findByName(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException{
+        String nameIn = request.getParameter("nameFind");
+        List<Customer> customerList = customerDAO.selectByName(nameIn);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("website/customer/customer.jsp");
+        request.setAttribute("dskh",customerList);
+        dispatcher.forward(request,response);
     }
 
     private void showListCreate(HttpServletRequest request,HttpServletResponse response)  throws IOException,ServletException{

@@ -15,6 +15,7 @@ select * from category;
 insert into category values (1,'Khoa học viễn tưởng','Thể loại hành động không có thực');
 # Customer:
 select * from customer;
+select * from customer where name like '%ay%';
 insert into customer values (1,'bay',18,'Nam','HN','012345678','abcxyz@gmail.com','bay','123456','2000-08-12');
 # Orders:
 select * from orders;

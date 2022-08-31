@@ -3,7 +3,6 @@ package casestudy.service.book;
 import casestudy.config.ConnectionDatabase;
 import casestudy.crawlsData.CrawlsDataBook;
 import casestudy.model.Book;
-import casestudy.service.book.IBookDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,7 +57,7 @@ public class BookService implements IBookDAO {
     }
 
     @Override
-    public Book selectByName(String name) {
+    public List<Book> selectByName(String name) {
         Book book = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BOOK_BY_NAME);
