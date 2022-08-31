@@ -10,7 +10,7 @@ import java.util.List;
 public class CustomerDAO implements ICustomerDAO {
 
     Connection connection = ConnectionDatabase.getInstance().getConnect();
-    private static final String SELECT_ALL_CUSTOMERS = "select * from customer where status = 'ACTIVE' ;";
+    private static final String SELECT_ALL_CUSTOMERS = "select * from customer where status = 'ACTIVATE' ;";
     private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO customer (id,name,age,gender,address,phone,email,account,password,startdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT_CUSTOMER_BY_NAME = "select * from customer where name like ? ";
     private static final String DELETE_CUSTOMERS_SQL = "UPDATE customer set status = 'DISABLE' where id = ?";

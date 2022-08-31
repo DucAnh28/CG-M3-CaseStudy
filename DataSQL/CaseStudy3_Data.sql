@@ -59,7 +59,8 @@ create table customer
     email     varchar(255) not null,
     account   varchar(255) not null,
     password  varchar(255) not null,
-    startdate date         not null
+    startdate date         not null,
+    status varchar(255) default 'ACTIVATE'
 );
 ## Đơn hàng:
 create table orderS
