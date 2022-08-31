@@ -48,7 +48,7 @@ public class OrderDAO implements IOrderDAO {
     }
 
     @Override
-    public void delete(Order order) {
+    public void delete(int id) {
 
     }
 

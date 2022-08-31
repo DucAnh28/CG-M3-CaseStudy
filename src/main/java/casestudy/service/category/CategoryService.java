@@ -39,7 +39,7 @@ public class CategoryService implements ICategoryDAO{
     }
 
     @Override
-    public void delete(Category category) {
+    public void delete(int id) {
 
     }
 

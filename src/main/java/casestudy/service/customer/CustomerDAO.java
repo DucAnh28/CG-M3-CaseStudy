@@ -4,7 +4,6 @@ import casestudy.config.ConnectionDatabase;
 import casestudy.model.Customer;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class CustomerDAO implements ICustomerDAO {
     private static final String SELECT_ALL_CUSTOMERS = "select * from customer";
     private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO customer (id,name,age,gender,address,phone,email,account,password,startdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT_CUSTOMER_BY_NAME = "select * from customer where name like ? ";
-    private static final String DELETE_CUSTOMERS_SQL = "delete from customers where id = ?;";
+    private static final String DELETE_CUSTOMERS_SQL = "delete from customer where id = ?;";
     private static final String UPDATE_CUSTOMERS_SQL = "update customers set name = ?,age = ?, gender = ?, address = ?, phone = ?, email = ?, account = ?, password = ?, startdate = ? where id = ?;";
 
     public CustomerDAO() {
@@ -25,18 +24,19 @@ public class CustomerDAO implements ICustomerDAO {
         List<Customer> customerList = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_CUSTOMERS);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                int age = resultSet.getInt("age");
-                String gender = resultSet.getString("gender");
-                String address = resultSet.getString("address");
-                String phone = resultSet.getString("phone");
-                String email = resultSet.getString("email");
-                String account = resultSet.getString("account");
-                String password = resultSet.getString("password");
-                Date startDate = resultSet.getDate("startdate");
+            System.out.println(statement);
+            ResultSet resultSet1 = statement.executeQuery();
+            while (resultSet1.next()) {
+                int id = resultSet1.getInt("id");
+                String name = resultSet1.getString("name");
+                int age = resultSet1.getInt("age");
+                String gender = resultSet1.getString("gender");
+                String address = resultSet1.getString("address");
+                String phone = resultSet1.getString("phone");
+                String email = resultSet1.getString("email");
+                String account = resultSet1.getString("account");
+                String password = resultSet1.getString("password");
+                Date startDate = resultSet1.getDate("startdate");
                 customerList.add(new Customer(id, name, age, gender, address, phone, email, account, password, startDate));
             }
         } catch (SQLException exception) {
@@ -49,10 +49,9 @@ public class CustomerDAO implements ICustomerDAO {
     @Override
     public List<Customer> selectByName(String name) {
         List<Customer> customerList = new ArrayList<>();
-        Customer customer;
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_CUSTOMER_BY_NAME);
-            statement.setString(1, "'%" + name + "%'");
+            statement.setString(1, "%" +name +"%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -65,8 +64,9 @@ public class CustomerDAO implements ICustomerDAO {
                 String account = resultSet.getString("account");
                 String password = resultSet.getString("password");
                 Date startDate = resultSet.getDate("startdate");
-                customer = new Customer(id, name1, age, gender, address, phone, email, account, password, startDate);
+                Customer customer = new Customer(id, name1, age, gender, address, phone, email, account, password, startDate);
                 customerList.add(customer);
+                System.out.println(customerList.size());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -74,7 +74,15 @@ public class CustomerDAO implements ICustomerDAO {
         return customerList;
     }
 
-    public void delete(Customer customer) {
+    public void delete(int id) {
+        try{
+            PreparedStatement statement = connection.prepareStatement(DELETE_CUSTOMERS_SQL);
+            statement.setInt(1,id);
+            statement.executeUpdate();
+
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -103,4 +111,5 @@ public class CustomerDAO implements ICustomerDAO {
     public void update(int id, Customer customer) {
 
     }
+
 }

@@ -1,10 +1,8 @@
 package casestudy.service.book;
 
 import casestudy.config.ConnectionDatabase;
-import casestudy.crawlsData.CrawlsDataBook;
 import casestudy.model.Book;
 import casestudy.model.Category;
-import casestudy.service.book.IBookDAO;
 import casestudy.service.category.CategoryService;
 import casestudy.service.category.ICategoryDAO;
 
@@ -51,7 +49,7 @@ public class BookService implements IBookDAO {
     }
 
     @Override
-    public void delete(Book book) {
+    public void delete(int id) {
 
     }
 
