@@ -19,7 +19,7 @@ public class CustomerDAO implements ICustomerDAO {
     }
 
     @Override
-    public List selectAll() {
+    public List<Customer> selectAll() {
         List<Customer> customerList = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_CUSTOMERS);
@@ -102,8 +102,10 @@ public class CustomerDAO implements ICustomerDAO {
 
     }
 
-//    public static void main(String[] args) {
-//        CustomerDAO customerDAO = new CustomerDAO();
+    public static void main(String[] args) {
+        CustomerDAO customerDAO = new CustomerDAO();
 //        customerDAO.save(new Customer(2,"ducanh",22,"Male","HN","0969282458","ducanh@gmail.com","ducanh123","ducanh123",Date.valueOf(LocalDate.now())));
-//    }
+        customerDAO.selectByName("duc");
+
+    }
 }
