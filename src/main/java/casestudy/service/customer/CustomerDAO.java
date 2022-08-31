@@ -112,20 +112,28 @@ public class CustomerDAO implements ICustomerDAO {
     public void update(int id, Customer customer) {
         try {
             PreparedStatement statement = connection.prepareStatement(UPDATE_CUSTOMERS_DETAIL);
-            statement.setString(1,customer.getName());
-            statement.setInt(2,customer.getAge());
-            statement.setString(3,customer.getGender());
-            statement.setString(4,customer.getAddress());
-            statement.setString(5,customer.getPhone());
-            statement.setString(6,customer.getEmail());
-            statement.setInt(7,id);
+            statement.setString(1, customer.getName());
+            statement.setInt(2, customer.getAge());
+            statement.setString(3, customer.getGender());
+            statement.setString(4, customer.getAddress());
+            statement.setString(5, customer.getPhone());
+            statement.setString(6, customer.getEmail());
+            statement.setInt(7, id);
             statement.executeUpdate();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void changePasswordCustomer(String password){
+    public void changePasswordCustomer(int id, String password) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(UPDATE_PASSWORD_CUS);
+            statement.setString(1, password);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
