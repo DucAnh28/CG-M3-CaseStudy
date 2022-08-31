@@ -14,7 +14,7 @@ public class BookService implements IBookDAO {
     Connection connection = ConnectionDatabase.getInstance().getConnect();
     public static final String SELECT_ALL_BOOK = "select * from books;";
     public static final String INSERT_NEW_BOOK = "insert into books (id, code, name, author, price, image, description) VALUE (?, ?, ?, ?, ?, ?, ?);";
-    public static final String INSERT_NEW_BOOK_CATEGORY = "insert into book_category (category_id, book_id) VALUE (?, ?);";
+    public static final String INSERT_NEW_BOOK_CATEGORY = "insert into book_category (book_id, category_id) VALUE (?, ?);";
     ICategoryDAO categoryDAO = new CategoryService();
 
     @Override
@@ -34,7 +34,7 @@ public class BookService implements IBookDAO {
                 String description = resultSet.getString("description");
                 // lay ra danh sach danh muc theo id cua sach
                 List<Category> categories = categoryDAO.findAllByBookId(id);
-                Book book = new Book(id, code, name, author, price, image, description);
+                Book book = new Book(id, code, name, author, price, image, description, categories);
                 books.add(book);
             }
         } catch (SQLException throwables) {
@@ -71,9 +71,13 @@ public class BookService implements IBookDAO {
         try {
             connection.setAutoCommit(false);
             PreparedStatement statement1 = connection.prepareStatement(INSERT_NEW_BOOK, Statement.RETURN_GENERATED_KEYS);
-            statement1.setString(1, p.getName());
-            statement1.setString(2, p.getDescription());
-            statement1.setString(3, p.getAuthor());
+            statement1.setInt(1, p.getId());
+            statement1.setString(2, p.getCode());
+            statement1.setString(3, p.getName());
+            statement1.setString(4, p.getAuthor());
+            statement1.setDouble(5, p.getPrice());
+            statement1.setString(6, p.getImage());
+            statement1.setString(7, p.getDescription());
 //            CallableStatement statement1 =
 //                    connection.prepareCall("{CALL createNewBook(?, ?, ?)}");
 //            statement1.setString(1, p.getName());

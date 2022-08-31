@@ -36,7 +36,7 @@ public class BookServlet extends HttpServlet {
     }
     private void showFormCreate(HttpServletRequest req, HttpServletResponse resp){
         RequestDispatcher dispatcher = req.getRequestDispatcher("book/create.jsp");
-        req.setAttribute("categorys", categoryDAO.selectAll());
+        req.setAttribute("categories", categoryDAO.selectAll());
         try {
             dispatcher.forward(req, resp);
         } catch (ServletException e) {
@@ -72,6 +72,7 @@ public class BookServlet extends HttpServlet {
         }
     }
     private void createNewBook(HttpServletRequest req, HttpServletResponse resp) {
+
         int id = Integer.parseInt(req.getParameter("id"));
         String code = req.getParameter("code");
         String name = req.getParameter("name");
