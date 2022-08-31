@@ -15,6 +15,8 @@ import java.util.List;
 
 public class OrderDAO implements IOrderDAO {
     private final String SELECT_ALL_ORDERS = "select * from orders;";
+//    private final String SELECT_ALL_ORDERS = "select * from orders;";
+
     ICustomerDAO customerDAO = new CustomerDAO();
     Connection conection = ConnectionDatabase.getInstance().getConnect();
 

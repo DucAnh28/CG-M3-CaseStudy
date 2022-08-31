@@ -3,10 +3,8 @@ package casestudy.service.customer;
 import casestudy.config.ConnectionDatabase;
 import casestudy.model.Customer;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.sql.DriverManager.getConnection;
@@ -14,10 +12,10 @@ import static java.sql.DriverManager.getConnection;
 public class CustomerDAO implements ICustomerDAO {
 
     Connection connection = ConnectionDatabase.instance.getConnect();
-
+    private static final String SELECT_ALL_CUSTOMERS = "select * from customer";
     private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO customer (id,name,age,gender,address,phone,email,account,password,startdate) VALUES (?, ?, ?);";
     private static final String SELECT_CUSTOMER_BY_ID = "select id,name,age,gender,address,phone,email,account,password,startdate from customers where id =?";
-    private static final String SELECT_ALL_CUSTOMERS = "select * from customers";
+
     private static final String DELETE_CUSTOMERS_SQL = "delete from customers where id = ?;";
     private static final String UPDATE_CUSTOMERS_SQL = "update customers set name = ?,age = ?, gender = ?, address = ?, phone = ?, email = ?, account = ?, password = ?, startdate = ? where id = ?;";
 
@@ -25,46 +23,48 @@ public class CustomerDAO implements ICustomerDAO {
     }
 
     @Override
-    public List<Customer> selectAllCustomers() {
-        return null;
-    }
-
-    public void insertCustomer(Customer customer) throws SQLException {
-        System.out.println(INSERT_CUSTOMERS_SQL);
-        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMERS_SQL)) {
-            preparedStatement.setInt(1, customer.getId());
-            preparedStatement.setString(2, customer.getName());
-            preparedStatement.setInt(3, customer.getAge());
-            preparedStatement.setString(4, customer.getGender());
-            preparedStatement.setString(5, customer.getAddress());
-            preparedStatement.setString(6, customer.getPhone());
-            preparedStatement.setString(7, customer.getEmail());
-            preparedStatement.setString(8, customer.getAccount());
-            preparedStatement.setString(9, customer.getPassword());
-            preparedStatement.setDate(10, (Date) customer.getStartDate());
-
+    public List selectAll() {
+        List<Customer> customerList = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_CUSTOMERS);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                int age = resultSet.getInt("age");
+                String gender = resultSet.getString("gender");
+                String address = resultSet.getString("address");
+                String phone = resultSet.getString("phone");
+                String email = resultSet.getString("email");
+                String account = resultSet.getString("account");
+                String password = resultSet.getString("password");
+                Date startDate = resultSet.getDate("startdate");
+                customerList.add(new Customer(id,name,age,gender,address,phone,email,account,password,startDate));
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            System.out.println("Error In SQL");
         }
+        return customerList;
     }
 
     @Override
-    public Customer selectCustomerByName(int id) {
+    public Object selectByName(String name) {
         return null;
     }
 
+    @Override
+    public void delete(Object o) {
+
+    }
 
     @Override
-    public boolean deleteCustomer(int id) throws SQLException {
-        return false;
+    public void save(Object o) {
+
     }
 
     @Override
-    public boolean updateCustomer(Customer customer) throws SQLException {
-        return false;
+    public void update(int id, Object o) {
+
     }
-
-    private Connection getConnection(Customer customer) {
-        return null;
-    }
-
-
 }

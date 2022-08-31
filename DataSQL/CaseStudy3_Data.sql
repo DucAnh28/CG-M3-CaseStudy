@@ -1,12 +1,14 @@
 create database casestudy3;
 use casestudy3;
 
+## Thể loại:
 create table category
 (
     id          int primary key auto_increment,
     type        varchar(255),
     description varchar(255)
 );
+## Tác giả:
 create table author
   (
       id          int auto_increment primary key,
@@ -15,6 +17,7 @@ create table author
       national    varchar(255),
       description varchar(255)
   );
+## Sách
 create table books
 (
     id          int primary key auto_increment,
@@ -28,6 +31,7 @@ create table books
     imgage      varchar(255),
     description nvarchar(255)
 );
+## Kho:
 create table stock
 (
     id      int primary key auto_increment,
@@ -35,22 +39,7 @@ create table stock
     foreign key (book_id) references books (id),
     quantity int
 );
-
-create table orderS
-(
-    id          int primary key auto_increment,
-    customer_id int ,
-    foreign key (customer_id) references customer(id),
-    dateBuy date
-);
-create table ordersdetail(
-    id  int primary key auto_increment,
-    orders_id int,
-    foreign key (orders_id) references orderS(id),
-    book_id int,
-    foreign key (book_id) references books(id),
-    quantity int not null
-);
+## Khách hàng:
 create table customer
 (
     id        int primary key,
@@ -64,3 +53,21 @@ create table customer
     password  varchar(255) not null,
     startdate date         not null
 );
+## Đơn hàng:
+create table orderS
+(
+    id          int primary key auto_increment,
+    customer_id int ,
+    foreign key (customer_id) references customer(id),
+    dateBuy date
+);
+## Đơn hàng chi tiết:
+create table ordersdetail(
+    id  int primary key auto_increment,
+    orders_id int,
+    foreign key (orders_id) references orderS(id),
+    book_id int,
+    foreign key (book_id) references books(id),
+    quantity int not null
+);
+

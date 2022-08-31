@@ -2,7 +2,7 @@ package casestudy.model;
 
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Date;
 
 public class Customer {
     private int id;

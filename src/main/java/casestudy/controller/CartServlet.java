@@ -1,7 +1,6 @@
 package casestudy.controller;
 
 import casestudy.model.Order;
-import casestudy.service.IService;
 import casestudy.service.order.IOrderDAO;
 import casestudy.service.order.OrderDAO;
 
@@ -31,7 +30,7 @@ public class CartServlet extends HttpServlet {
 
     private void showCart(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
         List<Order> orderList = orderDAO.selectAll();
-        RequestDispatcher dispatcher = request.getRequestDispatcher("html/order.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("html/cart.jsp");
         request.setAttribute("dsgh",orderList);
         dispatcher.forward(request,response);
     }
