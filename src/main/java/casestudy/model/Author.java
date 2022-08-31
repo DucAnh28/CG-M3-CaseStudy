@@ -1,6 +1,7 @@
 package casestudy.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Author {
     private int id;
@@ -8,6 +9,7 @@ public class Author {
     private LocalDate yearBorn;
     private String national;
     private String description;
+    private List<Book> books;
 
     public Author() {
     }

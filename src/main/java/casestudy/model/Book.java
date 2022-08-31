@@ -1,35 +1,40 @@
 package casestudy.model;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 public class Book {
     private int id;
     private String code;
     private String name;
-    private int author_id;
+    private String author;
     private double price;
-    private int category_id;
     private String image;
     private String description;
+    private List<Category> categories;
 
     public Book() {
     }
 
-    public Book(int id, String name, double price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
-
-    public Book(int id, String code, String name, int author_id, double price, int category_id, String image, String description) {
+    public Book(int id, String code, String name, String author, double price, String image, String description) {
         this.id = id;
         this.code = code;
         this.name = name;
-        this.author_id = author_id;
+        this.author = author;
         this.price = price;
-        this.category_id = category_id;
         this.image = image;
         this.description = description;
+    }
+
+    public Book(int id, String code, String name, String author, double price, String image, String description, List<Category> categories) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.author = author;
+        this.price = price;
+        this.image = image;
+        this.description = description;
+        this.categories = categories;
     }
 
     public int getId() {
@@ -56,12 +61,12 @@ public class Book {
         this.name = name;
     }
 
-    public int getAuthor_id() {
-        return author_id;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public double getPrice() {
@@ -70,14 +75,6 @@ public class Book {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public int getCategory_id() {
-        return category_id;
-    }
-
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
     }
 
     public String getImage() {
@@ -96,17 +93,11 @@ public class Book {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", author_id=" + author_id +
-                ", price=" + price +
-                ", category_id=" + category_id +
-                ", image='" + image + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }
