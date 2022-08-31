@@ -46,7 +46,7 @@ public class BookService implements IBookDAO {
     }
 
     @Override
-    public Book selectByName(String name) {
+    public List<Book> selectByName(String name) {
         return null;
 =======
     public List<Book> selectByName(String name) {
