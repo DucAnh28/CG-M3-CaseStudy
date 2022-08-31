@@ -11,7 +11,7 @@ import static java.sql.DriverManager.getConnection;
 
 public class CustomerDAO implements ICustomerDAO {
 
-    Connection connection = ConnectionDatabase.instance.getConnect();
+    Connection connection = ConnectionDatabase.getInstance().getConnect();
     private static final String SELECT_ALL_CUSTOMERS = "select * from customer";
     private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO customer (id,name,age,gender,address,phone,email,account,password,startdate) VALUES (?, ?, ?);";
     private static final String SELECT_CUSTOMER_BY_ID = "select id,name,age,gender,address,phone,email,account,password,startdate from customers where id =?";

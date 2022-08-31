@@ -26,7 +26,18 @@
         <th>Date Join</th>
     </tr>
     <tr>
-        <c:forEach items=""
+        <c:forEach items="${dskh}" var="listCus">
+            <td>${listCus.id}</td>
+            <td>${listCus.name}</td>
+            <td>${listCus.age}</td>
+            <td>${listCus.gender}</td>
+            <td>${listCus.address}</td>
+            <td>${listCus.phone}</td>
+            <td>${listCus.email}</td>
+            <td>${listCus.account}</td>
+            <td>${listCus.password}</td>
+            <td>${listCus.startDate}</td>
+        </c:forEach>
     </tr>
 </table>
 </body>
