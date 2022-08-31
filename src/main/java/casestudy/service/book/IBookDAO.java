@@ -1,6 +1,5 @@
 package casestudy.service.book;
 
-import casestudy.crawlsData.CrawlsDataBook;
 import casestudy.model.Book;
 import casestudy.service.IService;
 
