@@ -3,6 +3,7 @@ package casestudy.service.book;
 import casestudy.config.ConnectionDatabase;
 import casestudy.model.Book;
 import casestudy.model.Category;
+import casestudy.model.Customer;
 import casestudy.service.category.CategoryService;
 import casestudy.service.category.ICategoryDAO;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class BookService implements IBookDAO {
     Connection connection = ConnectionDatabase.getInstance().getConnect();
     public static final String SELECT_ALL_BOOK = "select * from books;";
+    public static final String SELECT_BOOK_BY_NAME = "select * from books where name like ?";
     public static final String INSERT_NEW_BOOK = "insert into books (id, code, name, author, price, image, description) VALUE (?, ?, ?, ?, ?, ?, ?);";
     public static final String INSERT_NEW_BOOK_CATEGORY = "insert into book_category (book_id, category_id) VALUE (?, ?);";
     ICategoryDAO categoryDAO = new CategoryService();
@@ -45,7 +47,29 @@ public class BookService implements IBookDAO {
 
     @Override
     public List<Book> selectByName(String name) {
-        return null;
+        List<Book> books = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_BOOK_BY_NAME);
+            statement.setString(1, "%" + name + "%");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String code = resultSet.getString("code");
+                String name1 = resultSet.getString("name");
+                String author = resultSet.getString("author");
+                double price = resultSet.getDouble("price");
+                String image = resultSet.getString("image");
+                String description = resultSet.getString("description");
+                List<Category> categories = categoryDAO.findAllByBookId(id);
+                Book book = new Book(id, code, name1, author, price, image, description, categories);
+                books.add(book);
+
+                System.out.println(books.size());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
     }
 
     @Override

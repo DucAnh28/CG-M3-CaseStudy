@@ -30,6 +30,9 @@ public class BookServlet extends HttpServlet {
             case "create":
                 showFormCreate(req, resp);
                 break;
+            case "findByName":
+                selectBookByName(req, resp);
+                break;
             default:
                 showAllBook(req, resp);
         }
@@ -55,6 +58,19 @@ public class BookServlet extends HttpServlet {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    private void selectBookByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//      req.getRequestDispatcher("book/viewBook.jsp");
+        String name = req.getParameter("name");
+        List<Book> books = bookDAO.selectByName(name);
+        RequestDispatcher dispatcher;
+        if (books == null) {
+            dispatcher = req.getRequestDispatcher("book/Erro-404.jsp");
+        }else {
+            dispatcher = req.getRequestDispatcher("book/viewBook.jsp");
+            req.setAttribute("books", books);
+            dispatcher.forward(req, resp);
         }
     }
 
@@ -95,4 +111,5 @@ public class BookServlet extends HttpServlet {
         Book book = new Book(id, code, name, author, price, image, description);
         bookDAO.saves(book, categories);
     }
+
 }
