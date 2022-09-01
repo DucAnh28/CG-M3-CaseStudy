@@ -134,7 +134,10 @@ public class CustomerDAO implements ICustomerDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    public int findCustomerByAccount(String account){
+        return 1;
     }
 
     public static void main(String[] args) {

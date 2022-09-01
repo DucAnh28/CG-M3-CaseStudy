@@ -28,10 +28,17 @@ public class CustomerServlet extends HttpServlet {
             case "create":
                 showListCreate(req,resp);
                 break;
+            case "updateDetail":
+
+                break;
             default:
                 showAllCustomerInShop(req,resp);
                 break;
         }
+    }
+
+    private void showUpdateDetailForm(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
+        RequestDispatcher dispatcher = request.getRequestDispatcher("website/customer/customerDetail.jsp");
     }
 
     private void showListCreate(HttpServletRequest request,HttpServletResponse response)  throws IOException,ServletException{
