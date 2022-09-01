@@ -14,6 +14,7 @@
             width: 340px;
             margin: 50px auto;
             font-size: 15px;
+            position: center;
         }
         .login-form form {
             margin-bottom: 15px;
@@ -36,7 +37,7 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form action="" method="post">
         <h2 class="text-center">Log in</h2>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" required="required">

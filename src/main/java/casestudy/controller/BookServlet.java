@@ -69,8 +69,14 @@ public class BookServlet extends HttpServlet {
             case "create":
                 createNewBook(req, resp);
                 break;
+            case "findByName":
+                break;
+            default:
+                showAllBook(req,resp);
+                break;
         }
     }
+
     private void createNewBook(HttpServletRequest req, HttpServletResponse resp) {
 
         int id = Integer.parseInt(req.getParameter("id"));
