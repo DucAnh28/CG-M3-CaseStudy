@@ -72,4 +72,9 @@ public class CategoryService implements ICategoryDAO{
         }
         return categories;
     }
+
+    @Override
+    public Category findByID(int id) {
+        return null;
+    }
 }

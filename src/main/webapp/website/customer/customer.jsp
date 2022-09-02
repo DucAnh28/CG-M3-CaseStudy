@@ -17,8 +17,7 @@
         <th>#</th>
         <th>Name</th>
         <th>Age</th>
-        <th>Gender</th>
-        <th>Address</th>
+        <th>Gender</th>        <th>Address</th>
         <th>Phone</th>
         <th>Email</th>
         <th>Account</th>

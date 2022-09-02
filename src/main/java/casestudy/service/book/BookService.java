@@ -17,8 +17,10 @@ public class BookService implements IBookDAO {
     public static final String DELETE_BOOK_SQL = "delete from books where id = ?";
     public static final String SELECT_BOOK_BY_ID = "select * from books where id = ?";
     public static final String SELECT_BOOK_BY_NAME = "select * from books where name like ?";
+    public static final String SELECT_BOOK_BY_ID = "select * from books where id = ?";
     public static final String INSERT_NEW_BOOK = "insert into books (id, code, name, author, price, image, description) VALUE (?, ?, ?, ?, ?, ?, ?);";
     public static final String INSERT_NEW_BOOK_CATEGORY = "insert into book_category (book_id, category_id) VALUE (?, ?);";
+    public static final String UPDATE_BOOK = "update books set code = ?, name = ?, author = ?, price = ?, image = ?, description = ? where id = ?";
     ICategoryDAO categoryDAO = new CategoryService();
 
     @Override
@@ -65,8 +67,6 @@ public class BookService implements IBookDAO {
                 List<Category> categories = categoryDAO.findAllByBookId(id);
                 Book book = new Book(id, code, name1, author, price, image, description, categories);
                 books.add(book);
-
-//                System.out.println(books);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -74,7 +74,10 @@ public class BookService implements IBookDAO {
         return books;
     }
 
+<<<<<<< HEAD
     @Override
+=======
+>>>>>>> master
     public List<Book> selectById(int id) {
         List<Book> books = new ArrayList<>();
         try {
@@ -84,23 +87,39 @@ public class BookService implements IBookDAO {
             while (resultSet.next()) {
                 int id1 = resultSet.getInt("id");
                 String code = resultSet.getString("code");
+<<<<<<< HEAD
                 String name1 = resultSet.getString("name");
+=======
+                String name = resultSet.getString("name");
+>>>>>>> master
                 String author = resultSet.getString("author");
                 double price = resultSet.getDouble("price");
                 String image = resultSet.getString("image");
                 String description = resultSet.getString("description");
                 List<Category> categories = categoryDAO.findAllByBookId(id);
+<<<<<<< HEAD
                 Book book = new Book(id, code, name1, author, price, image, description, categories);
                 books.add(book);
 
 //                System.out.println(books);
+=======
+                Book book = new Book(id, code, name, author, price, image, description, categories);
+                books.add(book);
+>>>>>>> master
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return books;
     }
+<<<<<<< HEAD
     //    public static void main(String[] args) {
+=======
+
+
+
+//    public static void main(String[] args) {
+>>>>>>> master
 //        BookService bookService = new BookService();
 //        bookService.selectByName("ba");
 //    }
@@ -125,6 +144,22 @@ public class BookService implements IBookDAO {
     @Override
     public void update(int id, Book book) {
 
+    }
+    public void updates(int id, List<Book> books){
+        try {
+            PreparedStatement statement = connection.prepareStatement(UPDATE_BOOK);
+            statement.setInt(1, books.get(id).getId());
+            statement.setString(2, books.get(id).getCode());
+            statement.setString(3, books.get(id).getName());
+            statement.setString(4, books.get(id).getAuthor());
+            statement.setDouble(5, books.get(id).getPrice());
+            statement.setString(6, books.get(id).getImage());
+            statement.setString(7, books.get(id).getDescription());
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -176,5 +211,10 @@ public class BookService implements IBookDAO {
             }
             throwables.printStackTrace();
         }
+    }
+
+    @Override
+    public Book findByID(int id) {
+        return null;
     }
 }

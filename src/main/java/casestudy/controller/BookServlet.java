@@ -46,9 +46,12 @@ public class BookServlet extends HttpServlet {
             case "showFindForm":
                 showFindForm(req, resp);
                 break;
+<<<<<<< HEAD
             case "delete":
                 deleteBook(req, resp);
                 break;
+=======
+>>>>>>> master
             default:
                 showAllBook(req, resp);
                 break;
@@ -182,7 +185,6 @@ public class BookServlet extends HttpServlet {
         for (int i = 0; i < categoriesStr.length; i++) {
             categories[i] = Integer.parseInt(categoriesStr[i]);
         }
-
         Book book = new Book(id, code, name, author, price, image, description);
         bookDAO.saves(book, categories);
     }

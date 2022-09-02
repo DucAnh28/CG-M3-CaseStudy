@@ -28,11 +28,11 @@ public class CustomerServlet extends HttpServlet {
             case "create":
                 showListCreate(req,resp);
                 break;
-            case "updateDetail":
+            case "showDetailCustomer":
 
                 break;
             default:
-                showAllCustomerInShop(req,resp);
+                showHomePageCustomer(req,resp);
                 break;
         }
     }
@@ -46,10 +46,8 @@ public class CustomerServlet extends HttpServlet {
         dispatcher.forward(request,response);
     }
 
-    private void showAllCustomerInShop(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
-        List<Customer> customers = customerDAO.selectAll();
-        RequestDispatcher dispatcher = request.getRequestDispatcher("website/customer/customer.jsp");
-        request.setAttribute("dskh",customers);
+    private void showHomePageCustomer(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+        RequestDispatcher dispatcher = request.getRequestDispatcher("website/customer/homepageCustomer.jsp");
         dispatcher.forward(request,response);
     }
 
@@ -64,7 +62,7 @@ public class CustomerServlet extends HttpServlet {
                 createNewCustomer(req,resp);
                 break;
             default:
-                showAllCustomerInShop(req,resp);
+                showHomePageCustomer(req,resp);
                 break;
         }
     }

@@ -14,7 +14,7 @@ import java.sql.Date;
 import java.util.List;
 
 public class OrderDAO implements IOrderDAO {
-    private final String SELECT_ALL_ORDERS = "select * from orders;";
+    private final String SELECT_ALL_ORDERS = "select * from orders where ;";
 //    private final String SELECT_ALL_ORDERS = "select * from orders;";
 
     ICustomerDAO customerDAO = new CustomerDAO();
@@ -60,5 +60,10 @@ public class OrderDAO implements IOrderDAO {
     @Override
     public void update(int id,Order order) {
 
+    }
+
+    @Override
+    public Order findByID(int id) {
+        return null;
     }
 }
