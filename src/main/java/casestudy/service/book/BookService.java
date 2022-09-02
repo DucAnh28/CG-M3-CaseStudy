@@ -14,6 +14,8 @@ import java.util.List;
 public class BookService implements IBookDAO {
     Connection connection = ConnectionDatabase.getInstance().getConnect();
     public static final String SELECT_ALL_BOOK = "select * from books;";
+    public static final String DELETE_BOOK_SQL = "delete from books where id = ?";
+    public static final String SELECT_BOOK_BY_ID = "select * from books where id = ?";
     public static final String SELECT_BOOK_BY_NAME = "select * from books where name like ?";
     public static final String INSERT_NEW_BOOK = "insert into books (id, code, name, author, price, image, description) VALUE (?, ?, ?, ?, ?, ?, ?);";
     public static final String INSERT_NEW_BOOK_CATEGORY = "insert into book_category (book_id, category_id) VALUE (?, ?);";
@@ -72,13 +74,46 @@ public class BookService implements IBookDAO {
         return books;
     }
 
-//    public static void main(String[] args) {
+    @Override
+    public List<Book> selectById(int id) {
+        List<Book> books = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_BOOK_BY_ID);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id1 = resultSet.getInt("id");
+                String code = resultSet.getString("code");
+                String name1 = resultSet.getString("name");
+                String author = resultSet.getString("author");
+                double price = resultSet.getDouble("price");
+                String image = resultSet.getString("image");
+                String description = resultSet.getString("description");
+                List<Category> categories = categoryDAO.findAllByBookId(id);
+                Book book = new Book(id, code, name1, author, price, image, description, categories);
+                books.add(book);
+
+//                System.out.println(books);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
+    }
+    //    public static void main(String[] args) {
 //        BookService bookService = new BookService();
 //        bookService.selectByName("ba");
 //    }
 
     @Override
     public void delete(int id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(DELETE_BOOK_SQL);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

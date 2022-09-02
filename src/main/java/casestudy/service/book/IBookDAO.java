@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IBookDAO extends IService<Book> {
     public void saves(Book p, int[] categories);
+List<Book> selectById (int id);
 }
