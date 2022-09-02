@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -37,23 +38,27 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="" method="post">
+    <form action="/LoginServlet?action=login" method="post">
         <h2 class="text-center">Log in</h2>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username" required="required">
+            <input type="text" class="form-control" placeholder="Username" required="required" name="account">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required="required">
+            <input type="password" class="form-control" placeholder="Password" required="required" name="password">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Log in</button>
         </div>
+        <b><c:if test="${mess != null}">
+            <span>${mess}</span>
+        </c:if></b>
+        <br>
         <div class="clearfix">
             <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
             <a href="#" class="float-right">Forgot Password?</a>
         </div>
     </form>
-    <p class="text-center"><a href="#">Create an Account</a></p>
+    <p class="text-center"><a href="/LoginServlet?action=create">Create an Account</a></p>
 </div>
 </body>
 </html>

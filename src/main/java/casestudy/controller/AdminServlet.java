@@ -43,7 +43,7 @@ public class AdminServlet extends HttpServlet {
     }
 
     private void showHomePageAdmin(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
-        RequestDispatcher dispatcher = request.getRequestDispatcher("webapp/website/admin/adminPage.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("website/admin/adminPage.jsp");
         dispatcher.forward(request,response);
     }
 
@@ -80,7 +80,7 @@ public class AdminServlet extends HttpServlet {
 
                 break;
             default:
-
+                showHomePageAdmin(req,resp);
         }
     }
 
