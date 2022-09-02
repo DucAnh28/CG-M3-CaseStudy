@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 @WebServlet(name = "AdminServlet", urlPatterns = "/admin")
@@ -37,9 +40,20 @@ public class AdminServlet extends HttpServlet {
             case "editCustomer":
                 showEditCustomer(req, resp);
                 break;
+            case "deleteCustomer":
+                showDeleteCustomer(req,resp);
+                break;
             default:
                 showHomePageAdmin(req,resp);
         }
+    }
+
+    private void showDeleteCustomer(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+        int id = Integer.parseInt(req.getParameter("id"));
+        Customer tempDel = customerDAO.findByID(id);
+        req.setAttribute("delete",tempDel);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("website/admin/deleteCustomerForm.jsp");
+        dispatcher.forward(req,resp);
     }
 
     private void showHomePageAdmin(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
@@ -51,7 +65,7 @@ public class AdminServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id")) ;
         Customer customer = customerDAO.findByID(id);
         request.setAttribute("thisCus",customer);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("website/customer/update.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("website/admin/updateCustomer.jsp");
         dispatcher.forward(request,response);
     }
 
@@ -77,11 +91,38 @@ public class AdminServlet extends HttpServlet {
                 showAllCustomer(req, resp);
                 break;
             case "editCustomer":
-
+                editCustomer(req,resp);
+                break;
+            case "deleteCustomer":
+                deleteCustomer(req,resp);
                 break;
             default:
                 showHomePageAdmin(req,resp);
         }
     }
 
+    private void deleteCustomer(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+        int id = Integer.parseInt(req.getParameter("id"));
+        customerDAO.delete(id);
+        req.getRequestDispatcher("website/admin/customerList.jsp").forward(req,resp);
+    }
+
+    private void editCustomer(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Customer temp = customerDAO.findByID(id);
+        String name = request.getParameter("name");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String address = request.getParameter("address");
+        String gender = temp.getGender();
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String account = request.getParameter("account");
+        String password = request.getParameter("password");
+        Date now = temp.getStartDate();
+        Customer customer = new Customer(id,name,age,gender,address,email,phone,account,password,now);
+        customerDAO.update(id,customer);
+        request.setAttribute("mess","Success !");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("website/admin/updateCustomer.jsp");
+        dispatcher.forward(request, response);
+    }
 }
