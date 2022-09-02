@@ -91,7 +91,6 @@ public class BookServlet extends HttpServlet {
         for (int i = 0; i < categoriesStr.length; i++) {
             categories[i] = Integer.parseInt(categoriesStr[i]);
         }
-
         Book book = new Book(id, code, name, author, price, image, description);
         bookDAO.saves(book, categories);
     }

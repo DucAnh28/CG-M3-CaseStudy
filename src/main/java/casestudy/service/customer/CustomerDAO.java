@@ -16,6 +16,9 @@ public class CustomerDAO implements ICustomerDAO {
     private static final String DELETE_CUSTOMERS_SQL = "UPDATE customer set status = 'DISABLE' where id = ?";
     private static final String UPDATE_CUSTOMERS_DETAIL = "update customer set name = ?,age = ?, gender = ?, address = ?, phone = ?, email = ? where id = ?;";
     private static final String UPDATE_PASSWORD_CUS = "update customer set password = ? where id = ?;";
+    private static final String FIND_CUSTOMER_BY_ID = "select * from customer where id = ?;";
+
+
 
     public CustomerDAO() {
     }
@@ -73,6 +76,30 @@ public class CustomerDAO implements ICustomerDAO {
             e.printStackTrace();
         }
         return customerList;
+    }
+
+    public Customer findByID(int id){
+        Customer customer = null;
+        try{
+            PreparedStatement statement = connection.prepareStatement(FIND_CUSTOMER_BY_ID);
+            statement.setInt(1,id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                String name1 = resultSet.getString("name");
+                int age = resultSet.getInt("age");
+                String gender = resultSet.getString("gender");
+                String address = resultSet.getString("address");
+                String phone = resultSet.getString("phone");
+                String email = resultSet.getString("email");
+                String account = resultSet.getString("account");
+                String password = resultSet.getString("password");
+                Date startDate = resultSet.getDate("startdate");
+                customer = new Customer(id, name1, age, gender, address, phone, email, account, password, startDate);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return customer;
     }
 
     public void delete(int id) {

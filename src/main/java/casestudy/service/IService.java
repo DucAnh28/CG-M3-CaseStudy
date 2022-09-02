@@ -1,5 +1,7 @@
 package casestudy.service;
 
+import casestudy.model.Customer;
+
 import java.util.List;
 
 public interface IService<T> {
@@ -8,4 +10,5 @@ public interface IService<T> {
     void delete(int id);
     void save(T t);
     void update(int id,T t);
+    public T findByID(int id);
 }
