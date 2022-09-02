@@ -37,21 +37,9 @@ public class BookServlet extends HttpServlet {
             case "findByName":
                 selectBookByName(req, resp);
                 break;
-            case "findById":
-                selectBookById(req, resp);
-                break;
-            case "showFindIdForm":
-                showFindFormById(req,resp);
-                break;
             case "showFindForm":
                 showFindForm(req, resp);
                 break;
-<<<<<<< HEAD
-            case "delete":
-                deleteBook(req, resp);
-                break;
-=======
->>>>>>> master
             default:
                 showAllBook(req, resp);
                 break;
@@ -80,62 +68,14 @@ public class BookServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-    private void showDeleteForm(HttpServletRequest req, HttpServletResponse resp) {
-        int id = Integer.parseInt(req.getParameter("id"));
-        List<Book> books = bookDAO.selectById(id);
-        RequestDispatcher dispatcher;
-        if (books == null) {
-            dispatcher = req.getRequestDispatcher("Erro-404.jsp");
-        }else {
-            req.setAttribute("books", books);
-            dispatcher = req.getRequestDispatcher("book/delete.jsp");
-            try {
-                dispatcher.forward(req, resp);
-            } catch (ServletException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
     private void showFindForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("book/findForm.jsp");
-        requestDispatcher.forward(req,resp);
-    }
-    private void showFindFormById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("book/findIdForm.jsp");
         requestDispatcher.forward(req,resp);
     }
     private void selectBookByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher dispatcher = req.getRequestDispatcher("book/viewBook.jsp");
         String name = req.getParameter("name");
         List<Book> books = bookDAO.selectByName(name);
-        req.setAttribute("books", books);
-        try {
-            dispatcher.forward(req, resp);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    private void selectBookById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("book/viewBookById.jsp");
-        int id = Integer.parseInt(req.getParameter("id"));
-        List<Book> books = bookDAO.selectById(id);
-        req.setAttribute("books", books);
-        try {
-            dispatcher.forward(req, resp);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    private void selectBookById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("book/viewBookById.jsp");
-        int id = Integer.parseInt(req.getParameter("id"));
-        List<Book> books = bookDAO.selectById(id);
         req.setAttribute("books", books);
         try {
             dispatcher.forward(req, resp);
@@ -162,9 +102,6 @@ public class BookServlet extends HttpServlet {
                 break;
             case "findByName":
                 break;
-            case "delete":
-                deleteBook(req, resp);
-                break;
             default:
                 showAllBook(req,resp);
                 break;
@@ -188,28 +125,5 @@ public class BookServlet extends HttpServlet {
         Book book = new Book(id, code, name, author, price, image, description);
         bookDAO.saves(book, categories);
     }
-    private void deleteBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        int id = Integer.parseInt(req.getParameter("id"));
-//        List<Book> books = bookDAO.selectById(id);
-//        RequestDispatcher dispatcher;
-//        if (books == null) {
-//            dispatcher = req.getRequestDispatcher("Erro-404.js@");
-//        }else {
-//            this.bookService.delete(id);
-//            try {
-//                resp.sendRedirect("/books");
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//    }
-    int id = Integer.parseInt(req.getParameter("id"));
-        bookService.delete(id);
-    List<Book> books = bookService.selectAll();
-        req.setAttribute("books", books);
-    RequestDispatcher dispatcher = req.getRequestDispatcher("book/listBook.jsp");
-        dispatcher.forward(req, resp);
 
-}
-}
 }
