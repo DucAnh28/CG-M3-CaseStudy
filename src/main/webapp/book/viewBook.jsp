@@ -5,6 +5,8 @@
   Time: 23:24
   To change this template use File | Settings | File Templates.
 --%>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,10 +17,11 @@
 <%--<p>--%>
 <%--    <a href="/books">Back to product list</a>--%>
 <%--</p>--%>
-<form method="get">
-    <input type="text" name="name" id="name" placeholder="moi nhap ten sach can tra">
-</form>
 <table>
+<%--    <form href="/books?action=findByName">--%>
+<%--        <input type="text" name="name" id="name" placeholder="moi nhap ten sach can tra">--%>
+<%--        <input type="submit" value="submit">--%>
+<%--    </form>--%>
     <tr>
         <th>ID</th>
         <th>Code</th>
@@ -29,15 +32,15 @@
         <th>Description</th>
         <th>Category</th>
     </tr>
-    <c:forEach items="${bookss}" var="b">
+    <c:forEach items="${books}" var="b">
         <tr>
-            <td>${b.id}</td>
-            <td>${b.code}</td>
-            <td>${b.name}</td>
-            <td>${b.author}</td>
-            <td>${b.price}</td>
-            <td>${b.image}</td>
-            <td>${b.description}</td>
+            <td>${b.getId()}</td>
+            <td>${b.getCode()}</td>
+            <td >${b.getName()}</td>
+            <td>${b.getAuthor()}</td>
+            <td>${b.getPrice()}</td>
+            <td><img style="height: 50px; width: 50px" src="${b.getImage()}" alt="khong co anh"></td>
+            <td>${b.getDescription()}</td>
             <td>
                 <c:forEach items="${b.categories}" var="c">
                     <span>${c.type}</span> &nbsp;

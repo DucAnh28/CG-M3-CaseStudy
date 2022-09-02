@@ -26,13 +26,13 @@
     </tr>
     <c:forEach items="${books}" var="b">
         <tr>
-            <td>${b.id}</td>
-            <td>${b.code}</td>
-            <td>${b.name}</td>
-            <td>${b.author}</td>
-            <td>${b.price}</td>
-            <td>${b.image}</td>
-            <td>${b.description}</td>
+            <td>${b.getId()}</td>
+            <td>${b.getCode()}</td>
+            <td >${b.getName()}</td>
+            <td>${b.getAuthor()}</td>
+            <td>${b.getPrice()}</td>
+            <td><img src="${b.getImage()}" alt="khong co anh"></td>
+            <td>${b.getDescription()}</td>
             <td>
                 <c:forEach items="${b.categories}" var="c">
                     <span>${c.type}</span> &nbsp;

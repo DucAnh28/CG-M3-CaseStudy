@@ -64,13 +64,18 @@ public class BookService implements IBookDAO {
                 Book book = new Book(id, code, name1, author, price, image, description, categories);
                 books.add(book);
 
-                System.out.println(books.size());
+//                System.out.println(books);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return books;
     }
+
+//    public static void main(String[] args) {
+//        BookService bookService = new BookService();
+//        bookService.selectByName("ba");
+//    }
 
     @Override
     public void delete(int id) {
