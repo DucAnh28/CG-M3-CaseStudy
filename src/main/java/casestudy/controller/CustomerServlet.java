@@ -28,7 +28,7 @@ public class CustomerServlet extends HttpServlet {
             case "create":
                 showListCreate(req,resp);
                 break;
-            case "updateDetail":
+            case "showDetailCustomer":
 
                 break;
             default:
