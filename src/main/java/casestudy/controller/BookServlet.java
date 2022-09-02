@@ -40,9 +40,9 @@ public class BookServlet extends HttpServlet {
             case "showFindForm":
                 showFindForm(req, resp);
                 break;
-//            default:
-//                showAllBook(req, resp);
-//                break;
+            default:
+                showAllBook(req, resp);
+                break;
         }
     }
     private void showFormCreate(HttpServletRequest req, HttpServletResponse resp){
@@ -73,19 +73,6 @@ public class BookServlet extends HttpServlet {
         requestDispatcher.forward(req,resp);
     }
     private void selectBookByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        RequestDispatcher dispatcher;
-////      req.getRequestDispatcher("book/viewBook.jsp");
-//        String name1 = req.getParameter("name1");
-//        List<Book> books = bookService.selectByName(name1);
-//        req.setAttribute("books", books);
-//
-//        if (books == null) {
-//            req.getRequestDispatcher("book/Erro-404.jsp");
-//        }else {
-//            dispatcher = req.getRequestDispatcher("book/viewBook.jsp");
-//
-//            dispatcher.forward(req, resp);
-//        }
         RequestDispatcher dispatcher = req.getRequestDispatcher("book/viewBook.jsp");
         String name = req.getParameter("name");
         List<Book> books = bookDAO.selectByName(name);
