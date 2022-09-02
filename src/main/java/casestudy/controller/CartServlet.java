@@ -10,7 +10,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "CartServlet", value = "/cart")
+@WebServlet(name = "CartServlet", value = "/customer/cart")
 public class CartServlet extends HttpServlet {
     IOrderDAO orderDAO = new OrderDAO();
     @Override

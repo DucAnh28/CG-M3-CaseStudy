@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>About</title>
+    <title>Blog</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -139,94 +139,235 @@
 
 
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/images/bg-01.jpg');">
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url(/images/bg-02.jpg);">
     <h2 class="ltext-105 cl0 txt-center">
-        About
+        Blog
     </h2>
 </section>
 
 
 <!-- Content page -->
-<section class="bg0 p-t-75 p-b-120">
+<section class="bg0 p-t-62 p-b-60">
     <div class="container">
-        <div class="row p-b-148">
-            <div class="col-md-7 col-lg-8">
-                <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
-                    <h3 class="mtext-111 cl2 p-b-16">
-                        Our Story
-                    </h3>
-
-                    <p class="stext-113 cl6 p-b-26">
-                        To tell the truth, as opposed to my nerdy appearance, I have never been a book enthusiast.
-                        I don’t really experience joy in the process of sitting still and staring at thick pages for
-                        hours, thus, I hardly ever read. Nonetheless, there is one book that I actually take pleasure in
-                        reading.
-                        It is called “Dear girls”, written by the one and only, my favorite stand-up comedian, Ali Wong.
-                        I learned about this book last month through 2 of Ali Wong’s Netflix comedy special hits, “Baby
-                        Cobra” and “Hard Knock Wife”. Unfortunately, since Ali did the show when she was pregnant with
-                        her second daughter, after the show, she was absent from the stage for a few months.
-                        While waiting for her comeback, I decided to give her book a shot. Much as I hate reading, for
-                        the love of Ali, I managed to place an order, sit down and spend my time on a 200-page book.
-                    </p>
-
-                    <p class="stext-113 cl6 p-b-26">
-                        Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo
-                        Yolo Yolo Yolo Yolo Yolo <br>
-                        Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo Yolo
-                        Yolo Yolo Yolo Yolo Yolo <br>
-                    </p>
-
-                    <p class="stext-113 cl6 p-b-26">
-                        Any questions? Let us know in store at 23 Lo TT/01 My Dinh - DucAnhDz
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
-                <div class="how-bor1 ">
-                    <div class="hov-img0">
-                        <img src="images/about-01.jpg" alt="IMG">
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="row">
-            <div class="order-md-2 col-md-7 col-lg-8 p-b-30">
-                <div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
-                    <h3 class="mtext-111 cl2 p-b-16">
-                        Our Mission
-                    </h3>
+            <div class="col-md-8 col-lg-9 p-b-80">
+                <div class="p-r-45 p-r-0-lg">
+                    <!-- item blog -->
+                    <div class="p-b-63">
+                        <a href="blog-detail.html" class="hov-img0 how-pos5-parent">
+                            <img src="/images/blog-01.jpeg" alt="IMG-BLOG">
 
-                    <p class="stext-113 cl6 p-b-26">
-                        Mauris non lacinia magna. Sed nec lobortis dolor. Vestibulum rhoncus dignissim risus, sed
-                        consectetur erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
-                        turpis egestas. Nullam maximus mauris sit amet odio convallis, in pharetra magna gravida.
-                        Praesent sed nunc fermentum mi molestie tempor. Morbi vitae viverra odio. Pellentesque ac velit
-                        egestas, luctus arcu non, laoreet mauris. Sed in ipsum tempor, consequat odio in, porttitor
-                        ante. Ut mauris ligula, volutpat in sodales in, porta non odio. Pellentesque tempor urna vitae
-                        mi vestibulum, nec venenatis nulla lobortis. Proin at gravida ante. Mauris auctor purus at lacus
-                        maximus euismod. Pellentesque vulputate massa ut nisl hendrerit, eget elementum libero iaculis.
-                    </p>
+                            <div class="flex-col-c-m size-123 bg9 how-pos5">
+									<span class="ltext-107 cl2 txt-center">
+										22
+									</span>
 
-                    <div class="bor16 p-l-29 p-b-9 m-t-22">
-                        <p class="stext-114 cl6 p-r-40 p-b-11">
-                            Creativity is just connecting things. When you ask creative people how they did something,
-                            they feel a little guilty because they didn't really do it, they just saw something. It
-                            seemed obvious to them after a while.
-                        </p>
+                                <span class="stext-109 cl3 txt-center">
+										Aug 2022
+									</span>
+                            </div>
+                        </a>
 
-                        <span class="stext-111 cl8">
-								- Steve Jobs
-							</span>
+                        <div class="p-t-32">
+                            <h4 class="p-b-15">
+                                <a href="blog-detail.html" class="ltext-108 cl2 hov-cl1 trans-04">
+                                    Read Make You Better !
+                                </a>
+                            </h4>
+
+                            <p class="stext-117 cl6">
+                                Sach La Tri Thuc Cua Nhan Loai
+                            </p>
+
+                            <div class="flex-w flex-sb-m p-t-18">
+									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
+										<span>
+											<span class="cl4">By</span> Admin  
+											<span class="cl12 m-l-4 m-r-6">|</span>
+										</span>
+
+										<span>
+											Kien thuc bo ich
+											<span class="cl12 m-l-4 m-r-6">|</span>
+										</span>
+
+										<span>
+											8 Comments
+										</span>
+									</span>
+
+                                <a href="/home?action=blog" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+                                    Continue Reading
+
+                                    <i class="fa fa-long-arrow-right m-l-9"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- item blog -->
+                    <div class="p-b-63">
+                        <a href="blog-detail.html" class="hov-img0 how-pos5-parent">
+                            <img src="/images/blog-02.png" alt="IMG-BLOG">
+
+                            <div class="flex-col-c-m size-123 bg9 how-pos5">
+									<span class="ltext-107 cl2 txt-center">
+										22
+									</span>
+
+                                <span class="stext-109 cl3 txt-center">
+										Aug 2022
+									</span>
+                            </div>
+                        </a>
+
+                        <div class="p-t-32">
+                            <h4 class="p-b-15">
+                                <a href="blog-detail.html" class="ltext-108 cl2 hov-cl1 trans-04">
+                                    Yolo Yolo Yolo
+                                </a>
+                            </h4>
+
+                            <p class="stext-117 cl6">
+                                Live Your Life ! You Only Live Once !
+                            </p>
+
+                            <div class="flex-w flex-sb-m p-t-18">
+									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
+										<span>
+											<span class="cl4">By</span> Duc Anh
+											<span class="cl12 m-l-4 m-r-6">|</span>
+										</span>
+
+										<span>
+											Ha Noi - Mot Ngay Tuoi Dep
+											<span class="cl12 m-l-4 m-r-6">|</span>
+										</span>
+
+										<span>
+											28 Comments
+										</span>
+									</span>
+
+                                <a href="/home?action=blog" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+                                    Continue Reading
+
+                                    <i class="fa fa-long-arrow-right m-l-9"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
+                        <a href="/home?action=blog"
+                           class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
+                            1
+                        </a>
+
+                        <a href="/home?action=blog" class="flex-c-m how-pagination1 trans-04 m-all-7">
+                            2
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
-                <div class="how-bor2">
-                    <div class="hov-img0">
-                        <img src="images/about-02.jpg" alt="IMG">
+            <div class="col-md-4 col-lg-3 p-b-80">
+                <div class="side-menu">
+                    <div class="bor17 of-hidden pos-relative">
+                        <input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" type="text" name="search"
+                               placeholder="Search">
+
+                        <button class="flex-c-m size-122 ab-t-r fs-18 cl4 hov-cl1 trans-04">
+                            <i class="zmdi zmdi-search"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-t-55">
+                        <h4 class="mtext-112 cl2 p-b-33">
+                            Categories
+                        </h4>
+
+                        <ul>
+                            <li class="bor18">
+                                <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                    Chinh tri - phap luat
+                                </a>
+                            </li>
+
+                            <li class="bor18">
+                                <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                    Khoa hoc cong nghe - Kinh te
+                                </a>
+                            </li>
+
+                            <li class="bor18">
+                                <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                    Van hoc nghe thuat
+                                </a>
+                            </li>
+
+                            <li class="bor18">
+                                <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                    Van hoa hoi - lich su
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-t-55">
+                        <h4 class="mtext-112 cl2 p-b-20">
+                            Archive
+                        </h4>
+
+                        <ul>
+                            <li class="p-b-7">
+                                <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span>
+											Sep 2022
+										</span>
+
+                                    <span>
+											(9)
+										</span>
+                                </a>
+                            </li>
+
+                            <li class="p-b-7">
+                                <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span>
+											Aug 2022
+										</span>
+
+                                    <span>
+											(39)
+										</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-t-50">
+                        <h4 class="mtext-112 cl2 p-b-27">
+                            Tags
+                        </h4>
+
+                        <div class="flex-w m-r--5">
+                            <a href="/home?action=blog"
+                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                Yolo 1
+                            </a>
+
+                            <a href="/home?action=blog"
+                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                Yolo 2
+                            </a>
+
+                            <a href="/home?action=blog"
+                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                Yolo 3
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

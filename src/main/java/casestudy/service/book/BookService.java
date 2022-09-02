@@ -142,4 +142,9 @@ public class BookService implements IBookDAO {
             throwables.printStackTrace();
         }
     }
+
+    @Override
+    public Book findByID(int id) {
+        return null;
+    }
 }
