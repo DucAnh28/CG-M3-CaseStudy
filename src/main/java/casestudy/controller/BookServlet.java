@@ -129,6 +129,19 @@ public class BookServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+    private void selectBookById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("book/viewBookById.jsp");
+        int id = Integer.parseInt(req.getParameter("id"));
+        List<Book> books = bookDAO.selectById(id);
+        req.setAttribute("books", books);
+        try {
+            dispatcher.forward(req, resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @Override
@@ -195,5 +208,6 @@ public class BookServlet extends HttpServlet {
     RequestDispatcher dispatcher = req.getRequestDispatcher("book/listBook.jsp");
         dispatcher.forward(req, resp);
 
+}
 }
 }
