@@ -18,6 +18,7 @@ import java.util.List;
 @WebServlet (name = "BookServlet" , urlPatterns = "/books")
 public class BookServlet extends HttpServlet {
     IBookDAO bookDAO = new BookService();
+    BookService bookService = new BookService();
     ICategoryDAO categoryDAO = new CategoryService();
 
     @Override
@@ -30,8 +31,18 @@ public class BookServlet extends HttpServlet {
             case "create":
                 showFormCreate(req, resp);
                 break;
+            case "editBook":
+//                showEditBook(req, resp);
+                break;
+            case "findByName":
+                selectBookByName(req, resp);
+                break;
+            case "showFindForm":
+                showFindForm(req, resp);
+                break;
             default:
                 showAllBook(req, resp);
+                break;
         }
     }
     private void showFormCreate(HttpServletRequest req, HttpServletResponse resp){
@@ -57,6 +68,23 @@ public class BookServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+    private void showFindForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("book/findForm.jsp");
+        requestDispatcher.forward(req,resp);
+    }
+    private void selectBookByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("book/viewBook.jsp");
+        String name = req.getParameter("name");
+        List<Book> books = bookDAO.selectByName(name);
+        req.setAttribute("books", books);
+        try {
+            dispatcher.forward(req, resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @Override
@@ -68,6 +96,9 @@ public class BookServlet extends HttpServlet {
         switch (action) {
             case "create":
                 createNewBook(req, resp);
+                break;
+            case "edit":
+//                updateBook(req, resp);
                 break;
             case "findByName":
                 break;
@@ -93,4 +124,5 @@ public class BookServlet extends HttpServlet {
         Book book = new Book(id, code, name, author, price, image, description);
         bookDAO.saves(book, categories);
     }
+
 }

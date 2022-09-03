@@ -3,6 +3,7 @@ package casestudy.service.book;
 import casestudy.config.ConnectionDatabase;
 import casestudy.model.Book;
 import casestudy.model.Category;
+import casestudy.model.Customer;
 import casestudy.service.category.CategoryService;
 import casestudy.service.category.ICategoryDAO;
 
@@ -13,8 +14,13 @@ import java.util.List;
 public class BookService implements IBookDAO {
     Connection connection = ConnectionDatabase.getInstance().getConnect();
     public static final String SELECT_ALL_BOOK = "select * from books;";
+    public static final String SELECT_BOOK_BY_NAME = "select * from books where name like ?";
+    public static final String SELECT_BOOK_BY_ID = "select * from books where id = ?";
     public static final String INSERT_NEW_BOOK = "insert into books (id, code, name, author, price, image, description) VALUE (?, ?, ?, ?, ?, ?, ?);";
     public static final String INSERT_NEW_BOOK_CATEGORY = "insert into book_category (book_id, category_id) VALUE (?, ?);";
+    public static final String UPDATE_BOOK = "update books set code = ?, name = ?, author = ?, price = ?, image = ?, description = ? where id = ?";
+    public static final String UPDATE_BOOK_CATEGORY = "update book_category set category_id = ? where book_id = ? and category_id = ?";
+
     ICategoryDAO categoryDAO = new CategoryService();
 
     @Override
@@ -45,8 +51,62 @@ public class BookService implements IBookDAO {
 
     @Override
     public List<Book> selectByName(String name) {
-        return null;
+        List<Book> books = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_BOOK_BY_NAME);
+            statement.setString(1, "%" + name + "%");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String code = resultSet.getString("code");
+                String name1 = resultSet.getString("name");
+                String author = resultSet.getString("author");
+                double price = resultSet.getDouble("price");
+                String image = resultSet.getString("image");
+                String description = resultSet.getString("description");
+                List<Category> categories = categoryDAO.findAllByBookId(id);
+                Book book = new Book(id, code, name1, author, price, image, description, categories);
+                books.add(book);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
     }
+
+    public Book selectById(int id) {
+        Book book = new Book();
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_BOOK_BY_ID);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id1 = resultSet.getInt("id");
+                String code = resultSet.getString("code");
+                String name = resultSet.getString("name");
+                String author = resultSet.getString("author");
+                double price = resultSet.getDouble("price");
+                String image = resultSet.getString("image");
+                String description = resultSet.getString("description");
+                List<Category> categories = categoryDAO.findAllByBookId(id);
+                book = new Book(id1, code, name, author, price, image, description, categories);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return book;
+    }
+
+
+//    public static void main(String[] args) {
+//        BookService bookService = new BookService();
+//        Book book = bookService.selectById(9);
+//        List<Category> categories = new ArrayList<>();
+//        CategoryService categoryService = new CategoryService();
+//        Category category = categoryService.findByID(3);
+//        categories.add(category);
+//        bookService.updates(book, categories);
+//    }
 
     @Override
     public void delete(int id) {
@@ -61,6 +121,29 @@ public class BookService implements IBookDAO {
     @Override
     public void update(int id, Book book) {
 
+    }
+    public void updates(Book book, List<Category> newCategories){
+        try {
+            PreparedStatement statement = connection.prepareStatement(UPDATE_BOOK);
+            statement.setString(1, book.getCode());
+            statement.setString(2, book.getName());
+            statement.setString(3, book.getAuthor());
+            statement.setDouble(4, book.getPrice());
+            statement.setString(5, book.getImage());
+            statement.setString(6, book.getDescription());
+            statement.setInt(7, book.getId());
+            statement.executeUpdate();
+            List<Category> categories = book.getCategories();
+            for (int i = 0; i < categories.size(); i++) {
+                PreparedStatement statement1 = connection.prepareStatement(UPDATE_BOOK_CATEGORY);
+                statement1.setInt(1, newCategories.get(i).getId());
+                statement1.setInt(2, book.getId());
+                statement1.setInt(3, categories.get(i).getId());
+                statement1.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
