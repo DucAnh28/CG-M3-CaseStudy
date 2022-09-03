@@ -119,7 +119,7 @@ public class AdminServlet extends HttpServlet {
         String account = request.getParameter("account");
         String password = request.getParameter("password");
         Date now = temp.getStartDate();
-        Customer customer = new Customer(id,name,age,gender,address,email,phone,account,password,now);
+        Customer customer = new Customer(id,name,age,gender,address,phone,email,account,password,now);
         customerDAO.update(id,customer);
         request.setAttribute("mess","Success !");
         RequestDispatcher dispatcher = request.getRequestDispatcher("website/admin/updateCustomer.jsp");

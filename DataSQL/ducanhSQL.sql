@@ -7,7 +7,7 @@ select * from customer where name like '%duc%';
 insert into customer values (1,'bay',18,'Nam','HN','012345678','abcxyz@gmail.com','bay','123456','2000-08-12','ACTIVATE');
 # Orders:
 
-select * from orders;
+select * from orders where customer_id =1;
 insert into orders values (1,1,'2022-08-30');
 insert into orders values (2,5,'2022-08-30');
 # insert into orders values (3,2,'2022-08-30');
