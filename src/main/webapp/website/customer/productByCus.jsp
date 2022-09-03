@@ -84,11 +84,11 @@
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li class="active-menu">
+                        <li >
                             <a href="/customer">Home</a>
                         </li>
 
-                        <li>
+                        <li class="active-menu">
                             <a href="/customer?action=showProduct">Shop</a>
                         </li>
 
@@ -140,6 +140,7 @@
             </form>
         </div>
     </div>
+    <br>
 </header>
 
 <!-- Cart -->
@@ -261,9 +262,9 @@
                         <div class="block2-pic hov-img0">
                             <img src="${hbook.image}" alt="IMG-PRODUCT">
 
-                            <a href="/books?acion=viewDetail$id=${hbook.id}"
+                            <a href="/customer?action=add&id=${hbook.id}"
                                class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
-                                View Detail
+                                Add Into Cart
                             </a>
                         </div>
 
