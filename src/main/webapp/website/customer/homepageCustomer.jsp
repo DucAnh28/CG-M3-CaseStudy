@@ -53,8 +53,12 @@
                         Help & FAQs
                     </a>
 
-                    <a href="/LoginServlet" class="flex-c-m trans-04 p-lr-25">
-                        My Account
+                    <a href="/customer?action=showDetail" class="flex-c-m trans-04 p-lr-25">
+                        Hello ${acc.name}
+                    </a>
+
+                    <a href="/LoginServlet?action=logout" class="flex-c-m trans-04 p-lr-25">
+                        Logout
                     </a>
 
                     <p class="flex-c-m trans-04 p-lr-25">
@@ -72,7 +76,7 @@
             <nav class="limiter-menu-desktop container">
 
                 <!-- Logo desktop -->
-                <a href="#" class="logo">
+                <a href="/customer" class="logo">
                     <img src="images/logo/logoBookBay.png" alt="IMG-LOGO">
                 </a>
 
@@ -80,23 +84,23 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu">
-                            <a href="homepage.jsp">Home</a>
+                            <a href="/customer">Home</a>
                         </li>
 
                         <li>
-                            <a href="product.html">Shop</a>
+                            <a href="/customer?action=showAllBook">Shop</a>
                         </li>
 
                         <li class="label1" data-label1="hot">
-                            <a href="shoping-cart.html">Your Cart</a>
+                            <a href="/customer?action=cart">Your Cart</a>
                         </li>
 
                         <li>
-                            <a href="blog.html">Blog</a>
+                            <a href="/home?action=blog">Blog</a>
                         </li>
 
                         <li>
-                            <a href="about.html">About</a>
+                            <a href="/home?action=about">About</a>
                         </li>
 
                         <li>
@@ -109,11 +113,6 @@
                 <div class="wrap-icon-header flex-w flex-r-m">
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                         <i class="zmdi zmdi-search"></i>
-                    </div>
-
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                         data-notify="2">
-                        <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
                     <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
@@ -144,7 +143,7 @@
 
 <!-- Cart -->
 <div class="wrap-header-cart js-panel-cart">
-    <a href="/LoginServlet "></a>
+    <a href="/customer?action=cart"></a>
 </div>
 
 
@@ -168,7 +167,7 @@
                         </div>
 
                         <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-                            <a href="/LoginServlet"
+                            <a href="/customer?action=cart"
                                class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                 Shop Now
                             </a>
@@ -193,7 +192,7 @@
                         </div>
 
                         <div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-                            <a href="/LoginServlet"
+                            <a href="/customer?action=cart"
                                class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                 Shop Now
                             </a>
@@ -218,7 +217,7 @@
                         </div>
 
                         <div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-                            <a href="/LoginServlet"
+                            <a href="/customer?action=cart"
                                class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                 Shop Now
                             </a>
@@ -235,6 +234,7 @@
     <div class="container">
         <div class="p-b-10">
             <h3 class="ltext-103 cl5">
+                <br><br>
                 Product Overview
             </h3>
         </div>
@@ -335,35 +335,36 @@
 
 
         <section class="row isotope-grid">
-            <core:forEach items="${listHome}" var="hbook">
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="${hbook.image}" alt="IMG-PRODUCT">
+            <core:forEach items="${listPro}" var="hbook">
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="${hbook.image}" alt="IMG-PRODUCT">
 
-                        <a href="/books?acion=viewDetail$id=${hbook.id}"
-                           class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
-                            View Detail
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="/books?acion=viewDetail$id=${hbook.id}" class="stext-104 cl4 hov-cl1 trans-04 ">
-                                    ${hbook.name}
+                            <a href="/books?acion=viewDetail$id=${hbook.id}"
+                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
+                                View Detail
                             </a>
-                            <span class="stext-105 cl3">
-                                    ${hbook.author}
-                            </span>
-                            <span class="stext-105 cl3">
+                        </div>
+
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="/books?acion=viewDetail$id=${hbook.id}"
+                                   class="stext-104 cl4 hov-cl1 trans-04 ">
+                                        ${hbook.name}
+                                </a>
+                                <span class="stext-105 cl3">
+                                        ${hbook.author}
+                                </span>
+                                <span class="stext-105 cl3">
                                     ${hbook.price} Đ
                             </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-                </core:forEach>
+            </core:forEach>
         </section>
 
 
@@ -508,8 +509,10 @@
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script>
                         All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-                            href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Happy_smiley_face.png/600px-Happy_smiley_face.png" target="_blank">Duc Anh Pro_Ba Tran Vip</a> &amp; distributed by <a
-                            href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Happy_smiley_face.png/600px-Happy_smiley_face.png" target="_blank">Kieu Anh</a>
+                            href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Happy_smiley_face.png/600px-Happy_smiley_face.png"
+                            target="_blank">Duc Anh Pro_Ba Tran Vip</a> &amp; distributed by <a
+                            href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Happy_smiley_face.png/600px-Happy_smiley_face.png"
+                            target="_blank">Kieu Anh</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
                     </p>

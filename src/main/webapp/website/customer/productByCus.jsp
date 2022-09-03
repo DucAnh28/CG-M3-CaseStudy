@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<html lang="en">
 <head>
-    <title>Home</title>
+    <title>Product</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -37,6 +37,7 @@
     <!--===============================================================================================-->
 </head>
 <body class="animsition">
+
 <!-- Header -->
 <header>
     <!-- Header desktop -->
@@ -49,16 +50,24 @@
                 </div>
 
                 <div class="right-top-bar flex-w h-full">
-                    <a href="/admin" class="flex-c-m trans-04 p-lr-25">
-                        Hello Admin
+                    <a href="/home?action=contact" class="flex-c-m trans-04 p-lr-25">
+                        Help & FAQs
+                    </a>
+
+                    <a href="/customer?action=showDetail" class="flex-c-m trans-04 p-lr-25">
+                        Hello ${acc.name}
+                    </a>
+
+                    <a href="/LoginServlet?action=logout" class="flex-c-m trans-04 p-lr-25">
+                        Logout
                     </a>
 
                     <p class="flex-c-m trans-04 p-lr-25">
-                        Duc Anh
+                        VN
                     </p>
 
                     <p class="flex-c-m trans-04 p-lr-25"><b>
-                        Ba Tran
+                        VND
                     </b></p>
                 </div>
             </div>
@@ -68,7 +77,7 @@
             <nav class="limiter-menu-desktop container">
 
                 <!-- Logo desktop -->
-                <a href="#" class="logo">
+                <a href="/customer" class="logo">
                     <img src="images/logo/logoBookBay.png" alt="IMG-LOGO">
                 </a>
 
@@ -76,105 +85,208 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu">
-                            <a href="/admin">Home</a>
+                            <a href="/customer">Home</a>
                         </li>
 
                         <li>
-                            <a href="product.html">Books In Shop</a>
+                            <a href="/customer?action=showProduct">Shop</a>
+                        </li>
+
+                        <li class="label1" data-label1="hot">
+                            <a href="/customer?action=cart">Your Cart</a>
                         </li>
 
                         <li>
-                            <a href="/admin?action=showAllCus">Customer Detail</a>
+                            <a href="/home?action=blog">Blog</a>
+                        </li>
+
+                        <li>
+                            <a href="/home?action=about">About</a>
+                        </li>
+
+                        <li>
+                            <a href="/home?action=contact">Contact</a>
                         </li>
                     </ul>
+                </div>
+
+                <!-- Icon header -->
+                <div class="wrap-icon-header flex-w flex-r-m">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+                        <i class="zmdi zmdi-search"></i>
+                    </div>
+
+                    <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+                       data-notify="0">
+                        <i class="zmdi zmdi-favorite-outline"></i>
+                    </a>
                 </div>
             </nav>
         </div>
     </div>
+
+    <!-- Modal Search -->
+    <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+        <div class="container-search-header">
+            <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                <img src="images/icons/icon-close2.png" alt="CLOSE">
+            </button>
+
+            <form method="post" class="wrap-search-header flex-w p-l-15" action="/books?action=">
+                <button class="flex-c-m trans-04">
+                    <i class="zmdi zmdi-search"></i>
+                </button>
+                <input class="plh3" type="text" name="search" placeholder="Search...">
+            </form>
+        </div>
+    </div>
 </header>
 
-<!-- Slider -->
-<section class="section-slide">
-    <div class="wrap-slick1">
-        <div class="slick1">
-            <div class="item-slick1" style="background-image: url(/images/slide-book-01.webp);">
-                <div class="container h-full">
-                    <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-                        <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-                                    Book Bay
-								</span>
-                        </div>
+<!-- Cart -->
+<div class="wrap-header-cart js-panel-cart">
+    <a href="/customer?action=cart"></a>
+</div>
 
-                        <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-                            <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                FIRST SEASON
-                            </h2>
-                        </div>
 
-                        <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-                            <a href="/LoginServlet"
-                               class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                Shop Now
-                            </a>
-                        </div>
-                    </div>
+<!-- Product -->
+<div class="bg0 p-t-23 p-b-140">
+    <div class="container">
+        <div class="p-b-10">
+            <h3 class="ltext-103 cl5">
+                <br>
+                Product Overview
+            </h3>
+        </div>
+
+        <div class="flex-w flex-sb-m p-b-52">
+            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+                    All Products
+                </button>
+            </div>
+
+            <div class="flex-w flex-c-m m-tb-10">
+                <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+                    <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
+                    <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+                    Filter
+                </div>
+
+                <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+                    <i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
+                    <i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+                    Search
                 </div>
             </div>
 
-            <div class="item-slick1" style="background-image: url(/images/slide-book-02.jpg);">
-                <div class="container h-full">
-                    <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-                        <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									Beauty of Books & literary pleasure
-								</span>
-                        </div>
-
-                        <div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
-                            <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                Sweet Reads!
-                            </h2>
-                        </div>
-
-                        <div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-                            <a href="/admin"
-                               class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                Duc Anh Pro
-                            </a>
-                        </div>
-                    </div>
+            <!-- Search product -->
+            <div class="dis-none panel-search w-full p-t-10 p-b-15">
+                <div class="bor8 dis-flex p-l-15">
+                    <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                    <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product"
+                           placeholder="Search">
                 </div>
             </div>
 
-            <div class="item-slick1" style="background-image: url(/images/slide-book-03.jpg);">
-                <div class="container h-full">
-                    <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-                        <div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									Book For Everyone 2022
-								</span>
+            <!-- Filter -->
+            <div class="dis-none panel-filter w-full p-t-10">
+                <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+                    <div class="filter-col1 p-r-15 p-b-27">
+                        <div class="mtext-102 cl2 p-b-15">
+                            Sort By
                         </div>
+                        <ul>
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    Default
+                                </a>
+                            </li>
 
-                        <div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
-                            <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                New arrivals
-                            </h2>
-                        </div>
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    Name
+                                </a>
+                            </li>
 
-                        <div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-                            <a href="/admin"
-                               class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                Ba Tran
-                            </a>
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    Author
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-col2 p-r-15 p-b-27">
+                        <div class="mtext-102 cl2 p-b-15">
+                            Price
                         </div>
+                        <ul>
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+                                    All
+                                </a>
+                            </li>
+
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    $0.00 - $50.00
+                                </a>
+                            </li>
+
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    $50.00 - $100.00
+                                </a>
+                            </li>
+
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    $100.00 - $150.00
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
 
+
+        <section class="row isotope-grid">
+            <core:forEach items="${listPro}" var="hbook">
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="${hbook.image}" alt="IMG-PRODUCT">
+
+                            <a href="/books?acion=viewDetail$id=${hbook.id}"
+                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
+                                View Detail
+                            </a>
+                        </div>
+
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="/books?acion=viewDetail$id=${hbook.id}"
+                                   class="stext-104 cl4 hov-cl1 trans-04 ">
+                                        ${hbook.name}
+                                </a>
+                                <span class="stext-105 cl3">
+                                        ${hbook.author}
+                                </span>
+                                <span class="stext-105 cl3">
+                                    ${hbook.price} Đ
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </core:forEach>
+        </section>
+    </div>
+</div>
 <!-- Footer -->
 <footer class="bg3 p-t-75 p-b-32">
     <div class="container">
@@ -218,7 +330,7 @@
 
                 <ul>
                     <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                        <a href="/home?action=contact" class="stext-107 cl7 hov-cl1 trans-04">
                             Yolo
                         </a>
                     </li>
@@ -401,8 +513,7 @@
 							</span>
 
                         <p class="stext-102 cl3 p-t-23">
-                            Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris
-                            consequat ornare
+                            Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare
                             feugiat.
                         </p>
 
@@ -546,61 +657,61 @@
 <script src="vendor/isotope/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
 <script src="vendor/sweetalert/sweetalert.min.js"></script>
-<%--<script>--%>
-<%--    $('.js-addwish-b2').on('click', function (e) {--%>
-<%--        e.preventDefault();--%>
-<%--    });--%>
+<script>
+    $('.js-addwish-b2, .js-addwish-detail').on('click', function (e) {
+        e.preventDefault();
+    });
 
-<%--    $('.js-addwish-b2').each(function () {--%>
-<%--        var nameProduct = $(this).parent().parent().find('.js-name-b2').html();--%>
-<%--        $(this).on('click', function () {--%>
-<%--            swal(nameProduct, "is added to wishlist !", "success");--%>
+    $('.js-addwish-b2').each(function () {
+        var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+        $(this).on('click', function () {
+            swal(nameProduct, "is added to wishlist !", "success");
 
-<%--            $(this).addClass('js-addedwish-b2');--%>
-<%--            $(this).off('click');--%>
-<%--        });--%>
-<%--    });--%>
+            $(this).addClass('js-addedwish-b2');
+            $(this).off('click');
+        });
+    });
 
-<%--    $('.js-addwish-detail').each(function () {--%>
-<%--        var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();--%>
+    $('.js-addwish-detail').each(function () {
+        var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
-<%--        $(this).on('click', function () {--%>
-<%--            swal(nameProduct, "is added to wishlist !", "success");--%>
+        $(this).on('click', function () {
+            swal(nameProduct, "is added to wishlist !", "success");
 
-<%--            $(this).addClass('js-addedwish-detail');--%>
-<%--            $(this).off('click');--%>
-<%--        });--%>
-<%--    });--%>
+            $(this).addClass('js-addedwish-detail');
+            $(this).off('click');
+        });
+    });
 
-<%--    /*---------------------------------------------*/--%>
+    /*---------------------------------------------*/
 
-<%--    $('.js-addcart-detail').each(function () {--%>
-<%--        var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();--%>
-<%--        $(this).on('click', function () {--%>
-<%--            swal(nameProduct, "is added to cart !", "success");--%>
-<%--        });--%>
-<%--    });--%>
+    $('.js-addcart-detail').each(function () {
+        var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+        $(this).on('click', function () {
+            swal(nameProduct, "is added to cart !", "success");
+        });
+    });
 
-<%--</script>--%>
+</script>
 <!--===============================================================================================-->
 <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<%--<script>--%>
-<%--    $('.js-pscroll').each(function () {--%>
-<%--        $(this).css('position', 'relative');--%>
-<%--        $(this).css('overflow', 'hidden');--%>
-<%--        var ps = new PerfectScrollbar(this, {--%>
-<%--            wheelSpeed: 1,--%>
-<%--            scrollingThreshold: 1000,--%>
-<%--            wheelPropagation: false,--%>
-<%--        });--%>
+<script>
+    $('.js-pscroll').each(function () {
+        $(this).css('position', 'relative');
+        $(this).css('overflow', 'hidden');
+        var ps = new PerfectScrollbar(this, {
+            wheelSpeed: 1,
+            scrollingThreshold: 1000,
+            wheelPropagation: false,
+        });
 
-<%--        $(window).on('resize', function () {--%>
-<%--            ps.update();--%>
-<%--        })--%>
-<%--    });--%>
-<%--</script>--%>
+        $(window).on('resize', function () {
+            ps.update();
+        })
+    });
+</script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>
->
+
 </body>
 </html>

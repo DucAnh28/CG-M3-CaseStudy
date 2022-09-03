@@ -150,7 +150,6 @@ public class BookServlet extends HttpServlet {
     }
 
     private void createNewBook(HttpServletRequest req, HttpServletResponse resp) {
-
         int id = Integer.parseInt(req.getParameter("id"));
         String code = req.getParameter("code");
         String name = req.getParameter("name");

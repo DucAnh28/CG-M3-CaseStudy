@@ -18,36 +18,56 @@
           rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 <body>
-<form method="post" action="">
+<h1>Customer Detail:</h1>
+<form method="post" action="/customer?action=editDetail&id=${thisCus.id}">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputEmail4">Name</label>
-            <input type="text" class="form-control" id="inputEmail4" value="${thisCus.name}">
+            <input type="text" class="form-control" id="inputEmail4" value="${thisCus.name}" name="name">
         </div>
         <div class="form-group col-md-6">
-            <label for="inputPassword4">Age</label>
-            <input type="text" class="form-control" id="inputPassword4" value="${thisCus.age}">
+            <label for="inputAge">Age</label>
+            <input type="text" class="form-control" id="inputAge" value="${thisCus.age}" name="age">
         </div>
     </div>
     <div class="form-group">
         <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" id="inputAddress" value="${thisCus.address}">
+        <input type="text" class="form-control" id="inputAddress" value="${thisCus.address}" name="address">
     </div>
     <div class="form-group">
         <label for="inputAddress2">Phone</label>
-        <input type="text" class="form-control" id="inputAddress2" value="${thisCus.phone}">
+        <input type="text" class="form-control" id="inputAddress2" value="${thisCus.phone}" name="phone">
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputCity">Email</label>
-            <input type="email" class="form-control" id="inputCity" value="${thisCus.email}">
+            <input type="email" class="form-control" id="inputCity" value="${thisCus.email}" name="email">
         </div>
         <div class="form-group col-md-2">
             <label for="inputZip">Account</label>
-            <input type="text" class="form-control" id="inputZip" value="${thisCus.account}">
+            <input type="text" class="form-control" id="inputZip" value="${thisCus.account}" name="account">
         </div>
+        <div class="form-group col-md-2">
+            <label for="inputZip">Password</label>
+            <input type="text" class="form-control" value="${thisCus.password}" name="password">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputZip">Gender</label>
+            <p class="form-control" value="${thisCus.gender}" name="gender">${thisCus.gender} (Can't Change)</p>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputZip">Date Join</label>
+            <p  class="form-control" value="${thisCus.startDate}" name="date">${thisCus.startDate} (Can't Change)</p>
+        </div>
+
     </div>
     <button type="submit" class="btn btn-primary">Confirm</button>
 </form>
+<p>
+    <c:if test="${mess != null}">
+        <span>${mess}</span>
+    </c:if>
+</p>
+<h3><a href="/customer">Back To Customers HomePage</a></h3>
 </body>
 </html>
