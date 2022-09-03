@@ -334,9 +334,12 @@
                 <div class="row">
                     <div class="col-sm-8"><h2>Customer <b>Details</b></h2></div>
                     <div class="col-sm-4">
+                        <form action="/admin?action=findName" method="post">
                         <div class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
-                            <input type="text" class="form-control" placeholder="Search&hellip;">
+                            <input type="text" class="form-control" placeholder="Search&hellip;" name="findName">
+<%--                            <input type="submit" class="form-control" placeholder="Search&hellip;">--%>
+                            </form>
                         </div>
                     </div>
                 </div>
