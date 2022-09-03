@@ -20,14 +20,8 @@ public class OrderDAO implements IOrderDAO {
 
 //    Query:
     private final String FIND_ORDERS = "select * from orders where customer_id = ?;";
-    private final String CREATE_NEW_ORDERS = "insert into orders (cutomer_id,dateBuy) values (?,?);";
+    private final String CREATE_NEW_ORDERS = "insert into orders (customer_id,dateBuy) values (?,?);";
     private final String CREATE_NEW_ORDERSDETAIL = "insert into ordersdetail (orders_id, book_id, quantity) values (?,?,?);;";
-
-    public static void main(String[] args) {
-        OrderDAO orderDAO = new OrderDAO();
-//        orderDAO.createOrderDetail(4,2,8);
-        orderDAO.createNewOrder(5);
-    }
 
     public OrderDAO() {
     }
