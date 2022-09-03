@@ -13,8 +13,12 @@
 <body>
 <form method="GET">
     <input type="text" name="name" placeholder="moi nhap ten">
-    <input type="text" name="action" value="findByName" style="display: none">
-    <input type="submit" value="search">
+    <input type="text" name="id" placeholder="moi nhap id">
+    <input type="text" name="id" placeholder="moi nhap id de sua sach">
+<%--    <input type="text" name="action" value="findByName" style="display: none">--%>
+    <input type="submit" value="findById" name="action">
+    <input type="submit" value="findByName" name="action">
+    <input type="submit" value="edit" name="action">
 </form>
 
 </body>
