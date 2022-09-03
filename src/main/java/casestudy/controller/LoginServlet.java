@@ -80,6 +80,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     private void createNewCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Customer customer = null ;
         int id = (int) Math.floor(Math.random() * 100);
         String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));
@@ -91,12 +92,14 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         Date now = Date.valueOf(LocalDate.now());
         if (checkAccountAvailable(account)) {
-            Customer customer = new Customer(id, name, age, address, gender, email, phone, account, password, now);
+            customer = new Customer(id, name, age, address, gender, email, phone, account, password, now);
             customerDAO.save(customer);
             request.setAttribute("mess", "Create Succesfull");
         } else {
             request.setAttribute("mess", "Account Has Been Used");
         }
+        HttpSession session = request.getSession();
+        session.setAttribute("acc",customer);
         RequestDispatcher dispatcher = request.getRequestDispatcher("website/login/register.jsp");
         dispatcher.forward(request, response);
     }

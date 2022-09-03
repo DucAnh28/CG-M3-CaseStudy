@@ -104,7 +104,7 @@ public class AdminServlet extends HttpServlet {
     private void deleteCustomer(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
         int id = Integer.parseInt(req.getParameter("id"));
         customerDAO.delete(id);
-        req.getRequestDispatcher("website/admin/customerList.jsp").forward(req,resp);
+        showAllCustomer(req,resp);
     }
 
     private void editCustomer(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
