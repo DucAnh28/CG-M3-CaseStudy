@@ -73,7 +73,8 @@ public class LoginServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             } else {
                 Customer customer = customerDAO.findCustomerByAccount(account);
-                request.setAttribute("thisCustomer", customer);
+                HttpSession session = request.getSession();
+                session.setAttribute("acc",customer);
                 request.getRequestDispatcher("/website/customer/homepageCustomer.jsp").forward(request, response);
             }
         }
