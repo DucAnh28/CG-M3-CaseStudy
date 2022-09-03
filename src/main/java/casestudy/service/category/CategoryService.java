@@ -13,6 +13,7 @@ import java.util.List;
 public class CategoryService implements ICategoryDAO{
     Connection connection = ConnectionDatabase.getInstance().getConnect();
     public static final String SELECT_ALL_BOOK = "select * from category;";
+    public static  final String FIND_BY_ID = "select * from category where id = ?";
     public static final String SELECT_CATEGORY_BY_BOOK_ID = "select id, type, description from category join book_category bc on category.id = bc.category_id and bc.book_id=?";
 
     @Override
@@ -75,6 +76,19 @@ public class CategoryService implements ICategoryDAO{
 
     @Override
     public Category findByID(int id) {
-        return null;
+        Category category = new Category();
+        try {
+            PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                String type = resultSet.getString("type");
+                String description = resultSet.getString("description");
+                category = new Category(id, type, description);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return category;
     }
 }

@@ -19,6 +19,8 @@ public class BookService implements IBookDAO {
     public static final String INSERT_NEW_BOOK = "insert into books (id, code, name, author, price, image, description) VALUE (?, ?, ?, ?, ?, ?, ?);";
     public static final String INSERT_NEW_BOOK_CATEGORY = "insert into book_category (book_id, category_id) VALUE (?, ?);";
     public static final String UPDATE_BOOK = "update books set code = ?, name = ?, author = ?, price = ?, image = ?, description = ? where id = ?";
+    public static final String UPDATE_BOOK_CATEGORY = "update book_category set category_id = ? where book_id = ? and category_id = ?";
+
     ICategoryDAO categoryDAO = new CategoryService();
 
     @Override
@@ -72,8 +74,8 @@ public class BookService implements IBookDAO {
         return books;
     }
 
-    public List<Book> selectById(int id) {
-        List<Book> books = new ArrayList<>();
+    public Book selectById(int id) {
+        Book book = new Book();
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_BOOK_BY_ID);
             statement.setInt(1, id);
@@ -87,20 +89,23 @@ public class BookService implements IBookDAO {
                 String image = resultSet.getString("image");
                 String description = resultSet.getString("description");
                 List<Category> categories = categoryDAO.findAllByBookId(id);
-                Book book = new Book(id, code, name, author, price, image, description, categories);
-                books.add(book);
+                book = new Book(id1, code, name, author, price, image, description, categories);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return books;
+        return book;
     }
-
 
 
 //    public static void main(String[] args) {
 //        BookService bookService = new BookService();
-//        bookService.selectByName("ba");
+//        Book book = bookService.selectById(9);
+//        List<Category> categories = new ArrayList<>();
+//        CategoryService categoryService = new CategoryService();
+//        Category category = categoryService.findByID(3);
+//        categories.add(category);
+//        bookService.updates(book, categories);
 //    }
 
     @Override
@@ -117,18 +122,25 @@ public class BookService implements IBookDAO {
     public void update(int id, Book book) {
 
     }
-    public void updates(int id, List<Book> books){
+    public void updates(Book book, List<Category> newCategories){
         try {
             PreparedStatement statement = connection.prepareStatement(UPDATE_BOOK);
-            statement.setInt(1, books.get(id).getId());
-            statement.setString(2, books.get(id).getCode());
-            statement.setString(3, books.get(id).getName());
-            statement.setString(4, books.get(id).getAuthor());
-            statement.setDouble(5, books.get(id).getPrice());
-            statement.setString(6, books.get(id).getImage());
-            statement.setString(7, books.get(id).getDescription());
-
+            statement.setString(1, book.getCode());
+            statement.setString(2, book.getName());
+            statement.setString(3, book.getAuthor());
+            statement.setDouble(4, book.getPrice());
+            statement.setString(5, book.getImage());
+            statement.setString(6, book.getDescription());
+            statement.setInt(7, book.getId());
             statement.executeUpdate();
+            List<Category> categories = book.getCategories();
+            for (int i = 0; i < categories.size(); i++) {
+                PreparedStatement statement1 = connection.prepareStatement(UPDATE_BOOK_CATEGORY);
+                statement1.setInt(1, newCategories.get(i).getId());
+                statement1.setInt(2, book.getId());
+                statement1.setInt(3, categories.get(i).getId());
+                statement1.executeUpdate();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
