@@ -14,6 +14,7 @@ import java.util.List;
 public class BookService implements IBookDAO {
     Connection connection = ConnectionDatabase.getInstance().getConnect();
     public static final String SELECT_ALL_BOOK = "select * from books;";
+    public static final String DELETE_BOOK_CATEGORY_BY_BOOK_ID="delete from book_category where book_id = ?";
     public static final String SELECT_BOOK_BY_NAME = "select * from books where name like ?";
     public static final String SELECT_BOOK_BY_ID = "select * from books where id = ?";
     public static final String INSERT_NEW_BOOK = "insert into books (id, code, name, author, price, image, description) VALUE (?, ?, ?, ?, ?, ?, ?);";
@@ -81,7 +82,7 @@ public class BookService implements IBookDAO {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                int id1 = resultSet.getInt("id");
+//                int id = resultSet.getInt("id");
                 String code = resultSet.getString("code");
                 String name = resultSet.getString("name");
                 String author = resultSet.getString("author");
@@ -89,7 +90,8 @@ public class BookService implements IBookDAO {
                 String image = resultSet.getString("image");
                 String description = resultSet.getString("description");
                 List<Category> categories = categoryDAO.findAllByBookId(id);
-                book = new Book(id1, code, name, author, price, image, description, categories);
+                book = new Book(id, code, name, author, price, image, description, categories);
+//                books.add(book);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -122,7 +124,8 @@ public class BookService implements IBookDAO {
     public void update(int id, Book book) {
 
     }
-    public void updates(Book book, List<Category> newCategories){
+    public void updates(Book book, int[] newCategories){
+//        Book book = new Book();
         try {
             PreparedStatement statement = connection.prepareStatement(UPDATE_BOOK);
             statement.setString(1, book.getCode());
@@ -133,13 +136,17 @@ public class BookService implements IBookDAO {
             statement.setString(6, book.getDescription());
             statement.setInt(7, book.getId());
             statement.executeUpdate();
-            List<Category> categories = book.getCategories();
-            for (int i = 0; i < categories.size(); i++) {
-                PreparedStatement statement1 = connection.prepareStatement(UPDATE_BOOK_CATEGORY);
-                statement1.setInt(1, newCategories.get(i).getId());
-                statement1.setInt(2, book.getId());
-                statement1.setInt(3, categories.get(i).getId());
-                statement1.executeUpdate();
+            PreparedStatement statement1 = connection.prepareStatement(DELETE_BOOK_CATEGORY_BY_BOOK_ID);
+            statement1.setInt(1, book.getId());
+            statement1.executeUpdate();
+            //b3: ghi them ban ghi vao bang trung gian book_category
+            //1. book_id, category_id
+            PreparedStatement statement2 = connection.prepareStatement(INSERT_NEW_BOOK_CATEGORY);
+            for (int category_id: newCategories
+            ) {
+                statement2.setInt(1,book.getId());
+                statement2.setInt(2,category_id);
+                statement2.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();
