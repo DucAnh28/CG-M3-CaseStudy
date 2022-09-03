@@ -19,7 +19,6 @@ import java.util.List;
 public class OrderDAO implements IOrderDAO {
     Connection conection = ConnectionDatabase.getInstance().getConnect();
 
-
     //    Query:
     private final String FIND_ORDERS = "select * from orders where customer_id = ?;";
     private final String CREATE_NEW_ORDERS = "insert into orders (customer_id,dateBuy) values (?,?);";
@@ -31,9 +30,35 @@ public class OrderDAO implements IOrderDAO {
             "where customer_id = ? \n" +
             "group by name;";
 
+    private final String REMOVE_BOOK_IN_CART = "delete from ordersdetail where quantity = 0";
+
+    private final String UPDATE_CART = "UPDATE ordersdetail t\n" +
+            "SET t.quantity = ?\n" +
+            "WHERE t.id = ?;\n" +
+            "\n"
+
     public OrderDAO() {
     }
 
+    public void updateCart(int old,int newQ){
+        try {
+            PreparedStatement statement = conection.prepareStatement(UPDATE_CART);
+            statement.setInt(1,old);
+            statement.setInt(2,newQ);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeOders(){
+        try{
+            PreparedStatement statement = conection.prepareStatement(REMOVE_BOOK_IN_CART);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public List<Cart> getCart(int id){
         List<Cart> cartList = new ArrayList<>();

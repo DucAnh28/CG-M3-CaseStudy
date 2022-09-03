@@ -39,7 +39,7 @@ group by name;
 # Xử lý lại database;
 drop table orders;
 drop table ordersdetail;
-
+alter table ordersdetail w
 # Book:
 select * from books;
 alter table books add column status varchar(255) default 'ACTIVATE';

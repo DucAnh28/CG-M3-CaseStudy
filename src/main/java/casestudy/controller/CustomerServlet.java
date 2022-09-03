@@ -1,6 +1,7 @@
 package casestudy.controller;
 
 import casestudy.model.Book;
+import casestudy.model.Cart;
 import casestudy.model.Customer;
 import casestudy.service.book.BookService;
 import casestudy.service.book.IBookDAO;
@@ -25,7 +26,7 @@ import java.util.List;
 public class CustomerServlet extends HttpServlet {
     IBookDAO bookDAO = new BookService();
     ICustomerDAO customerDAO = new CustomerDAO();
-    IOrderDAO orderDAO = new OrderDAO();
+    OrderDAO orderDAO = new OrderDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,13 +47,44 @@ public class CustomerServlet extends HttpServlet {
             case "cart":
                 showCart(req,resp);
                 break;
+            case "add":
+                addBook(req, resp);
+                break;
             default:
                 showHomePageCustomer(req, resp);
                 break;
         }
     }
 
-    private void showCart(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
+    private void addBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        int id_book = Integer.parseInt(req.getParameter("id"));
+        HttpSession session = req.getSession();
+        Customer customer = (Customer) session.getAttribute("acc");
+        orderDAO.createOrderDetail(customer.getId(), id_book,1);
+        List<Cart> cartList = orderDAO.getCart(customer.getId());
+        int sum = 0;
+        for (Cart x: cartList
+        ) {
+            sum += x.getTotalPrice();
+        }
+        req.setAttribute("sum",sum);
+        req.setAttribute("cart",cartList);
+        req.getRequestDispatcher("website/customer/shoping-cart.jsp").forward(req,resp);
+
+    }
+
+    private void showCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        double sum = 0;
+        HttpSession session = req.getSession();
+        Customer customer = (Customer) session.getAttribute("acc");
+        List<Cart> cartList = orderDAO.getCart(customer.getId());
+        for (Cart x: cartList
+             ) {
+            sum += x.getTotalPrice();
+        }
+        req.setAttribute("sum",sum);
+        req.setAttribute("cart",cartList);
+        req.getRequestDispatcher("website/customer/shoping-cart.jsp").forward(req,resp);
     }
 
     private void showAllBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
