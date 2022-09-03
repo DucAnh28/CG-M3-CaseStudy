@@ -14,6 +14,7 @@ import java.util.List;
 public class BookService implements IBookDAO {
     Connection connection = ConnectionDatabase.getInstance().getConnect();
     public static final String SELECT_ALL_BOOK = "select * from books;";
+    public static final String DELETE_BOOK_BY_ID="delete from books where id = ?";
     public static final String DELETE_BOOK_CATEGORY_BY_BOOK_ID="delete from book_category where book_id = ?";
     public static final String SELECT_BOOK_BY_NAME = "select * from books where name like ?";
     public static final String SELECT_BOOK_BY_ID = "select * from books where id = ?";
@@ -112,7 +113,17 @@ public class BookService implements IBookDAO {
 
     @Override
     public void delete(int id) {
-
+        try {
+            PreparedStatement statement = connection.prepareStatement(DELETE_BOOK_CATEGORY_BY_BOOK_ID);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            PreparedStatement statement1 = connection.prepareStatement(DELETE_BOOK_BY_ID);
+            statement1.setInt(1, id);
+            statement1.executeUpdate();
+            System.out.println("Disable Customer Successfull !");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

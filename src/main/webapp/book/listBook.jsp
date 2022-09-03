@@ -28,10 +28,10 @@
         <tr>
             <td>${b.getId()}</td>
             <td>${b.getCode()}</td>
-            <td >${b.getName()}</td>
+            <td>${b.getName()}</td>
             <td>${b.getAuthor()}</td>
             <td>${b.getPrice()}</td>
-            <td><img src="${b.getImage()}" alt="khong co anh"></td>
+            <td><img style="width: 50px; height: 50px" src="${b.getImage()}" alt="khong co anh"></td>
             <td>${b.getDescription()}</td>
             <td>
                 <c:forEach items="${b.categories}" var="c">

@@ -43,6 +43,13 @@ public class BookServlet extends HttpServlet {
             case "findById":
                 selectBookById(req, resp);
                 break;
+            case "delete":
+                try {
+                    deleteBook(req, resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
             case "showFindForm":
                 showFindForm(req, resp);
                 break;
@@ -53,6 +60,14 @@ public class BookServlet extends HttpServlet {
                 showAllBook(req, resp);
                 break;
         }
+    }
+    private void deleteBook(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        bookService.delete(id);
+        List<Book> books = bookService.selectAll();
+        request.setAttribute("books", books);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("book/listBook.jsp");
+        dispatcher.forward(request, response);
     }
     private void showFormCreate(HttpServletRequest req, HttpServletResponse resp){
         RequestDispatcher dispatcher = req.getRequestDispatcher("book/create.jsp");
