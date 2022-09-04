@@ -17,6 +17,7 @@ alter table books drop constraint books_ibfk_1;
 alter table books drop constraint books_ibfk_2;
 alter table books drop column category_id;
 alter table books modify column author varchar(255);
+
 # # Author: (Đã bỏ bảng tác giả)
 # drop table author;
 # select * from author;
