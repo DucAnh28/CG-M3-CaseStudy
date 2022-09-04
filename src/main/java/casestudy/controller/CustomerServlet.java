@@ -112,6 +112,11 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showHomePageCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Book> books = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            books.add(bookDAO.selectAll().get(i));
+        }
+        request.setAttribute("listPro1",books);
         RequestDispatcher dispatcher = request.getRequestDispatcher("website/customer/homepageCustomer.jsp");
         dispatcher.forward(request, response);
     }

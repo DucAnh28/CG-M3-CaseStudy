@@ -3,10 +3,7 @@ package casestudy.service.order;
 import casestudy.config.ConnectionDatabase;
 import casestudy.model.Cart;
 import casestudy.model.Order;
-import casestudy.service.customer.CustomerDAO;
-import casestudy.service.customer.ICustomerDAO;
 
-import javax.management.Query;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +27,7 @@ public class OrderDAO implements IOrderDAO {
             "where customer_id = ? \n" +
             "group by name;";
 
-    private final String REMOVE_BOOK_IN_CART = "delete from ordersdetail where quantity = 0";
+    private final String REMOVE_BOOK_IN_CART = "delete from ordersdetail where orders_id = ? and quantity = 0";
 
     private final String UPDATE_CART = "UPDATE ordersdetail t\n" +
             "SET t.quantity = ?\n" +
@@ -51,13 +48,27 @@ public class OrderDAO implements IOrderDAO {
         }
     }
 
-    public void removeOders(){
-        try{
-            PreparedStatement statement = conection.prepareStatement(REMOVE_BOOK_IN_CART);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public void editOders(int customer_id,int quantity){
+        Order order = checkOrder(customer_id);
+        if (quantity == 0){
+            try{
+                PreparedStatement statement = conection.prepareStatement(REMOVE_BOOK_IN_CART);
+                statement.setInt(1,order.getId());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+        else {
+            try {
+                PreparedStatement statement = conection.prepareStatement(UPDATE_CART);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
     public List<Cart> getCart(int id){

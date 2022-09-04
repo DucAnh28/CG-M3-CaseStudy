@@ -77,7 +77,7 @@
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li >
+                        <li>
                             <a href="/customer">Home</a>
                         </li>
 
@@ -174,7 +174,6 @@
                                         </div>
                                     </td>
                                     <td class="column-5">${listCart.totalPrice} $</td>
-<%--                                    <td class="column-5"><a href="/customer?action"></a>EDIT</td>--%>
                                 </tr>
                             </c:forEach>
 
@@ -182,9 +181,9 @@
                     </div>
 
                     <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-                            <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                                Update Cart
-                            </div>
+                        <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+                            Update Cart
+                        </div>
                     </div>
                 </div>
             </div>
@@ -204,8 +203,8 @@
 
                         <div class="size-209">
 								<span class="mtext-110 cl2">
-									${sum}
-								</span>
+                                    ${sum}
+                                </span>
                         </div>
                     </div>
 
@@ -265,12 +264,13 @@
 
                         <div class="size-209 p-t-1">
 								<span class="mtext-110 cl2">
-									${sum}
-								</span>
+                                    ${sum}
+                                </span>
                         </div>
                     </div>
 
-                    <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Happy_smiley_face.png/600px-Happy_smiley_face.png" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Happy_smiley_face.png/600px-Happy_smiley_face.png"
+                       class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                         Proceed to Checkout
                     </a>
                 </div>

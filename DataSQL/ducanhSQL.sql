@@ -28,3 +28,6 @@ drop table ordersdetail;
 # Book:
 select * from books;
 alter table books add column status varchar(255) default 'ACTIVATE';
+
+select *
+from ordersdetail;

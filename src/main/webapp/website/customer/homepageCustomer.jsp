@@ -335,7 +335,7 @@
 
 
         <section class="row isotope-grid">
-            <core:forEach items="${listPro}" var="hbook">
+            <core:forEach items="${listPro1}" var="hbook">
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
                     <!-- Block2 -->
                     <div class="block2">
@@ -366,8 +366,8 @@
                 </div>
             </core:forEach>
         </section>
-
-
+    </div>
+</div>
         <!-- Footer -->
         <footer class="bg3 p-t-75 p-b-32">
             <div class="container">
