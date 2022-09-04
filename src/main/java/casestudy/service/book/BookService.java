@@ -20,7 +20,7 @@ public class BookService implements IBookDAO {
     public static final String SELECT_BOOK_BY_ID = "select * from books where id = ?";
     public static final String INSERT_NEW_BOOK = "insert into books (id, code, name, author, price, image, description) VALUE (?, ?, ?, ?, ?, ?, ?);";
     public static final String INSERT_NEW_BOOK_CATEGORY = "insert into book_category (book_id, category_id) VALUE (?, ?);";
-    public static final String UPDATE_BOOK = "update books set code = ?, name = ?, author = ?, price = ?, image = ?, description = ? where id = ?";
+    public static final String UPDATE_BOOK = "update books set code = ?, name = ?, author = ?, price = ?, description = ? where id = ?";
     public static final String UPDATE_BOOK_CATEGORY = "update book_category set category_id = ? where book_id = ? and category_id = ?";
 
     ICategoryDAO categoryDAO = new CategoryService();
@@ -143,9 +143,9 @@ public class BookService implements IBookDAO {
             statement.setString(2, book.getName());
             statement.setString(3, book.getAuthor());
             statement.setDouble(4, book.getPrice());
-            statement.setString(5, book.getImage());
-            statement.setString(6, book.getDescription());
-            statement.setInt(7, book.getId());
+//            statement.setString(5, book.getImage());
+            statement.setString(5, book.getDescription());
+            statement.setInt(6, book.getId());
             statement.executeUpdate();
             PreparedStatement statement1 = connection.prepareStatement(DELETE_BOOK_CATEGORY_BY_BOOK_ID);
             statement1.setInt(1, book.getId());

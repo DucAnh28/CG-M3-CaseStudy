@@ -34,7 +34,8 @@
             <td ><input type="text" name="name" value="${book.getName()}"></td>
             <td><input type="text" name="author" value="${book.getAuthor()}"></td>
             <td><input type="text" name="price" value="${book.getPrice()}"></td>
-            <td><input type="image" name="image"  src="${book.getImage()}" alt="khong co anh"></td>
+<%--            <td><input type="image" name="image"  src="${book.getImage()}" alt="khong co anh"></td>--%>
+            <td>${book.getImage()}</td>
             <td><input type="text" name="description" value="${book.getDescription()}"></td>
             <td>
                 <select name="categories" id="categories" multiple>
