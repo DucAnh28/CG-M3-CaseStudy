@@ -80,7 +80,7 @@
                         </li>
 
                         <li>
-                            <a href="product.html">Books In Shop</a>
+                            <a href="/books?action=showAllBook">Books In Shop</a>
                         </li>
 
                         <li>
