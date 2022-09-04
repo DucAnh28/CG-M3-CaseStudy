@@ -50,9 +50,23 @@ public class CustomerServlet extends HttpServlet {
             case "add":
                 addBook(req, resp);
                 break;
+            case "edit":
+                editCart(req,resp);
+                break;
             default:
                 showHomePageCustomer(req, resp);
                 break;
+        }
+    }
+
+    private void editCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        int quantity = Integer.parseInt(req.getParameter("num-product1"));
+        int idBook = Integer.parseInt(req.getParameter("idB"));
+        if (quantity == 0){
+            orderDAO.removeOders();
+        }
+        else {
+            orderDAO.updateCart();
         }
     }
 
@@ -78,6 +92,7 @@ public class CustomerServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Customer customer = (Customer) session.getAttribute("acc");
         List<Cart> cartList = orderDAO.getCart(customer.getId());
+        session.setAttribute("cart",cartList);
         for (Cart x: cartList
              ) {
             sum += x.getTotalPrice();

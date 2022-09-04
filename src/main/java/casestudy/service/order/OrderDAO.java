@@ -35,16 +35,16 @@ public class OrderDAO implements IOrderDAO {
     private final String UPDATE_CART = "UPDATE ordersdetail t\n" +
             "SET t.quantity = ?\n" +
             "WHERE t.id = ?;\n" +
-            "\n"
+            "\n;";
 
     public OrderDAO() {
     }
 
-    public void updateCart(int old,int newQ){
+    public void updateCart(int quantity,int id){
         try {
             PreparedStatement statement = conection.prepareStatement(UPDATE_CART);
-            statement.setInt(1,old);
-            statement.setInt(2,newQ);
+            statement.setInt(1,quantity);
+            statement.setInt(2,id);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
