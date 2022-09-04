@@ -384,7 +384,7 @@
                     </td>
                 </tr>
                 <td>
-                    <a href="/books?action=edit&id=${book.id}" class="edit" title="Edit" data-toggle="tooltip">
+                    <a href="/books?action=edit&id=${b.id}" class="edit" title="Edit" data-toggle="tooltip">
                         <i class="material-icons">&#xE254;</i></a>
                     <a href="#myModal" class="delete trigger-btn" title="Delete" data-toggle="modal">
                         <i class="material-icons">&#xE872;</i></a>
