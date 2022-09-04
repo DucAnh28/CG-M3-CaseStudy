@@ -341,8 +341,9 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-8"><h2>Book <b>List</b></h2></div>
+                    <div style="padding-top: 30px" class="col-sm-8"><h4><a href="/books?action=create">Add <b>Book</b></a></h4></div>
                     <div class="col-sm-4">
-                        <form action="/admin?action=findName" method="post">
+                        <form action="/books?action=findByName&name=${book.name}" method="post">
                             <div class="search-box">
                                 <i class="material-icons">&#xE8B6;</i>
                                 <input type="text" class="form-control" placeholder="Search&hellip;" name="findName">
@@ -383,7 +384,7 @@
                     </td>
                 </tr>
                 <td>
-                    <a href="/books?action=edit&id=${book.id}" class="edit" title="Edit" data-toggle="tooltip">
+                    <a href="/books?action=edit&id=${b.id}" class="edit" title="Edit" data-toggle="tooltip">
                         <i class="material-icons">&#xE254;</i></a>
                     <a href="#myModal" class="delete trigger-btn" title="Delete" data-toggle="modal">
                         <i class="material-icons">&#xE872;</i></a>
