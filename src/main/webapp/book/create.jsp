@@ -356,7 +356,7 @@
         </div>
 
         <H1>ADD NEW BOOK</H1>
-        <form method="post">
+        <form method="post" action="/books?action=create">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="id" placeholder="id" aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <input type="text" class="form-control" name="code" placeholder="code" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -372,7 +372,7 @@
                     </c:forEach>
                 </select>
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" >NEW BOOK</button>
+                    <button class="btn btn-outline-secondary" type="submit" >NEW BOOK</button>
                 </div>
             </div>
 

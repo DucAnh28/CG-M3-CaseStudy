@@ -72,6 +72,7 @@ public class BookServlet extends HttpServlet {
     private void showFormCreate(HttpServletRequest req, HttpServletResponse resp){
         RequestDispatcher dispatcher = req.getRequestDispatcher("book/create.jsp");
         req.setAttribute("categories", categoryDAO.selectAll());
+
         try {
             dispatcher.forward(req, resp);
         } catch (ServletException e) {
@@ -164,7 +165,7 @@ public class BookServlet extends HttpServlet {
         }
     }
 
-    private void createNewBook(HttpServletRequest req, HttpServletResponse resp) {
+    private void createNewBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
         String code = req.getParameter("code");
         String name = req.getParameter("name");
@@ -179,6 +180,7 @@ public class BookServlet extends HttpServlet {
         }
         Book book = new Book(id, code, name, author, price, image, description);
         bookDAO.saves(book, categories);
+        resp.sendRedirect("/books");
     }
     private void updateBook(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 //        List<Category> categories = new ArrayList<>();
