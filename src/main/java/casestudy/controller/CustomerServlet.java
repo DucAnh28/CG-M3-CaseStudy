@@ -51,22 +51,11 @@ public class CustomerServlet extends HttpServlet {
                 addBook(req, resp);
                 break;
             case "edit":
-                editCart(req,resp);
+//                editCart(req,resp);
                 break;
             default:
                 showHomePageCustomer(req, resp);
                 break;
-        }
-    }
-
-    private void editCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        int quantity = Integer.parseInt(req.getParameter("num-product1"));
-        int idBook = Integer.parseInt(req.getParameter("idB"));
-        if (quantity == 0){
-            orderDAO.removeOders();
-        }
-        else {
-            orderDAO.updateCart();
         }
     }
 
