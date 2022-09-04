@@ -383,10 +383,11 @@
                         </c:forEach>
                     </td>
                 </tr>
+                <tr>
                 <td>
                     <a href="/books?action=edit&id=${b.id}" class="edit" title="Edit" data-toggle="tooltip">
                         <i class="material-icons">&#xE254;</i></a>
-                    <a href="/books?action=delete&id=${b.id}" class="delete trigger-btn" title="Delete" data-toggle="modal">
+                    <a href="#myModal" class="delete trigger-btn" title="Delete" data-toggle="modal">
                         <i class="material-icons">&#xE872;</i></a>
                 </td>
                 </tr>
@@ -394,7 +395,7 @@
 
                 <%--Modal--%>
                 <div id="myModal" class="modal fade">
-                    <form action="" method="post">
+                    <form action="/books?action=delete&id=${b.id}" method="post">
                         <div class="modal-dialog modal-confirm">
                             <div class="modal-content">
                                 <div class="modal-header flex-column">
