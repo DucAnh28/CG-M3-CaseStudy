@@ -393,7 +393,7 @@
 
                 <%--Modal--%>
                 <div id="myModal" class="modal fade">
-                    <form action="/books?action=delete&id=${customer.id}" method="post">
+                    <form action="" method="post">
                         <div class="modal-dialog modal-confirm">
                             <div class="modal-content">
                                 <div class="modal-header flex-column">

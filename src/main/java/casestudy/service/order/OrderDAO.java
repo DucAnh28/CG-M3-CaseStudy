@@ -35,7 +35,7 @@ public class OrderDAO implements IOrderDAO {
     private final String UPDATE_CART = "UPDATE ordersdetail t\n" +
             "SET t.quantity = ?\n" +
             "WHERE t.id = ?;\n" +
-            "\n"
+            "\n";
 
     public OrderDAO() {
     }
