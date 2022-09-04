@@ -52,6 +52,9 @@
                     <a href="/admin" class="flex-c-m trans-04 p-lr-25">
                         Hello Admin
                     </a>
+                    <a href="/home" class="flex-c-m trans-04 p-lr-25">
+                        Logout
+                    </a>
 
                     <p class="flex-c-m trans-04 p-lr-25">
                         Duc Anh
@@ -80,7 +83,7 @@
                         </li>
 
                         <li>
-                            <a href="product.html">Books In Shop</a>
+                            <a href="/books?action=showAllBook">Books In Shop</a>
                         </li>
 
                         <li>

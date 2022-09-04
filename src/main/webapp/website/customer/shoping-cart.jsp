@@ -174,7 +174,7 @@
                                         </div>
                                     </td>
                                     <td class="column-5">${listCart.totalPrice} $</td>
-                                    <td class="column-5"><a href="/customer?action=edit&idB=${listCart.id}"></a>EDIT</td>
+<%--                                    <td class="column-5"><a href="/customer?action"></a>EDIT</td>--%>
                                 </tr>
                             </c:forEach>
 

@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "CustomerServlet", urlPatterns = "/customer")
@@ -71,9 +72,8 @@ public class CustomerServlet extends HttpServlet {
             sum += x.getTotalPrice();
         }
         req.setAttribute("sum",sum);
-        req.setAttribute("cart",cartList);
+        req.setAttribute("cart1",cartList);
         req.getRequestDispatcher("website/customer/shoping-cart.jsp").forward(req,resp);
-
     }
 
     private void showCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -87,7 +87,7 @@ public class CustomerServlet extends HttpServlet {
             sum += x.getTotalPrice();
         }
         req.setAttribute("sum",sum);
-        req.setAttribute("cart",cartList);
+        req.setAttribute("cart1",cartList);
         req.getRequestDispatcher("website/customer/shoping-cart.jsp").forward(req,resp);
     }
 
