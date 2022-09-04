@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+=======
+<%--
+  Created by IntelliJ IDEA.
+  User: ishopjapan
+  Date: 01/09/2022
+  Time: 23:24
+  To change this template use File | Settings | File Templates.
+--%>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+<%--
+  Created by IntelliJ IDEA.
+  User: ishopjapan
+  Date: 31/08/2022
+  Time: 11:19
+  To change this template use File | Settings | File Templates.
+--%>
+
+<%--
+  Created by IntelliJ IDEA.
+  User: drago
+  Date: 01/09/2022
+  Time: 8:00 CH
+  To change this template use File | Settings | File Templates.
+--%>
+>>>>>>> batran
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
@@ -47,34 +73,54 @@
             background: #f5f5f5;
             font-family: 'Roboto', sans-serif;
         }
+<<<<<<< HEAD
 
         .table-responsive {
             margin: 30px 0;
         }
 
+=======
+        .table-responsive {
+            margin: 30px 0;
+        }
+>>>>>>> batran
         .table-wrapper {
             min-width: 1000px;
             background: #fff;
             padding: 20px;
+<<<<<<< HEAD
             box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
         }
 
+=======
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+>>>>>>> batran
         .table-title {
             padding-bottom: 10px;
             margin: 0 0 10px;
             min-width: 100%;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> batran
         .table-title h2 {
             margin: 8px 0 0;
             font-size: 22px;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> batran
         .search-box {
             position: relative;
             float: right;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> batran
         .search-box input {
             height: 34px;
             border-radius: 20px;
@@ -82,11 +128,17 @@
             border-color: #ddd;
             box-shadow: none;
         }
+<<<<<<< HEAD
 
         .search-box input:focus {
             border-color: #3FBAE4;
         }
 
+=======
+        .search-box input:focus {
+            border-color: #3FBAE4;
+        }
+>>>>>>> batran
         .search-box i {
             color: #a0a5b1;
             position: absolute;
@@ -94,6 +146,7 @@
             top: 8px;
             left: 10px;
         }
+<<<<<<< HEAD
 
         table.table tr th, table.table tr td {
             border-color: #e9e9e9;
@@ -107,21 +160,39 @@
             background: #f5f5f5;
         }
 
+=======
+        table.table tr th, table.table tr td {
+            border-color: #e9e9e9;
+        }
+        table.table-striped tbody tr:nth-of-type(odd) {
+            background-color: #fcfcfc;
+        }
+        table.table-striped.table-hover tbody tr:hover {
+            background: #f5f5f5;
+        }
+>>>>>>> batran
         table.table th i {
             font-size: 13px;
             margin: 0 5px;
             cursor: pointer;
         }
+<<<<<<< HEAD
 
         table.table td:last-child {
             width: 130px;
         }
 
+=======
+        table.table td:last-child {
+            width: 130px;
+        }
+>>>>>>> batran
         table.table td a {
             color: #a0a5b1;
             display: inline-block;
             margin: 0 5px;
         }
+<<<<<<< HEAD
 
         table.table td a.view {
             color: #03A9F4;
@@ -139,11 +210,28 @@
             font-size: 19px;
         }
 
+=======
+        table.table td a.view {
+            color: #03A9F4;
+        }
+        table.table td a.edit {
+            color: #FFC107;
+        }
+        table.table td a.delete {
+            color: #E34724;
+        }
+        table.table td i {
+            font-size: 19px;
+        }
+>>>>>>> batran
         .pagination {
             float: right;
             margin: 0 0 5px;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> batran
         .pagination li a {
             border: none;
             font-size: 95%;
@@ -156,6 +244,7 @@
             text-align: center;
             padding: 0;
         }
+<<<<<<< HEAD
 
         .pagination li a:hover {
             color: #666;
@@ -173,17 +262,37 @@
             color: #ccc;
         }
 
+=======
+        .pagination li a:hover {
+            color: #666;
+        }
+        .pagination li.active a {
+            background: #03A9F4;
+        }
+        .pagination li.active a:hover {
+            background: #0397d6;
+        }
+        .pagination li.disabled i {
+            color: #ccc;
+        }
+>>>>>>> batran
         .pagination li i {
             font-size: 16px;
             padding-top: 6px
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> batran
         .hint-text {
             float: left;
             margin-top: 6px;
             font-size: 95%;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> batran
         .modal-confirm {
             color: #636363;
             width: 400px;
@@ -283,7 +392,11 @@
         }
     </style>
     <script>
+<<<<<<< HEAD
         $(document).ready(function () {
+=======
+        $(document).ready(function(){
+>>>>>>> batran
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
@@ -328,7 +441,11 @@
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
+<<<<<<< HEAD
                         <li>
+=======
+                        <li >
+>>>>>>> batran
                             <a href="/admin">Home</a>
                         </li>
 
@@ -393,8 +510,14 @@
                             <span>${c.type}</span> &nbsp;
                         </c:forEach>
                     </td>
+<<<<<<< HEAD
                 <td>
                     <a href="/books?action=edit&id=${b.id}" class="edit" title="Edit" data-toggle="tooltip">
+=======
+                </tr>
+                <td>
+                    <a href="/books?action=edit&id=${book.id}" class="edit" title="Edit" data-toggle="tooltip">
+>>>>>>> batran
                         <i class="material-icons">&#xE254;</i></a>
                     <a href="#myModal" class="delete trigger-btn" title="Delete" data-toggle="modal">
                         <i class="material-icons">&#xE872;</i></a>
@@ -412,9 +535,13 @@
                                         <i class="material-icons">&#xE5CD;</i>
                                     </div>
                                     <h4 class="modal-title w-100">Are you sure?</h4>
+<<<<<<< HEAD
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                         &times;
                                     </button>
+=======
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+>>>>>>> batran
                                 </div>
                                 <div class="modal-body">
                                     <p>Do you really want to delete these records? This process cannot be undone.</p>
